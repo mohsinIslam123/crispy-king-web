@@ -10,6 +10,7 @@ collections:
     label: "Food Menu"
     folder: "content/menu"
     create: true
+    slug: "{{slug}}"
     fields:
       - { label: "Item Name", name: "title", widget: "string" }
       - { label: "Price", name: "price", widget: "number" }
