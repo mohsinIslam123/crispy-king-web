@@ -1,40 +1,43 @@
-var CATS = [
-  {file:"veg-burgers",grid:"grid-veg-burgers"},
-  {file:"nonveg-burgers",grid:"grid-nonveg-burgers"},
-  {file:"chicken",grid:"grid-chicken"},
-  {file:"fries",grid:"grid-fries"},
-  {file:"pizza",grid:"grid-pizza"},
-  {file:"wraps",grid:"grid-wraps"},
-  {file:"sandwich",grid:"grid-sandwich"},
-  {file:"shakes",grid:"grid-shakes"}
-];
-
-function buildCard(item) {
-  var wa = encodeURIComponent("Assalamualaikum! Mujhe " + item.name + " order karna hai");
-  return '<div class="menu-card">' +
-    '<div class="menu-card-img"><span style="font-size:40px">🍔</span>' +
-    (item.badge ? '<span class="menu-badge">' + item.badge + '</span>' : '') +
-    '</div><div class="menu-card-body">' +
-    (item.tag ? '<span class="menu-tag">' + item.tag + '</span>' : '') +
-    '<h3 class="menu-card-name">' + item.name + '</h3>' +
-    (item.desc ? '<p class="menu-card-desc">' + item.desc + '</p>' : '') +
-    '<div class="menu-card-footer">' +
-    '<span class="menu-card-price">&#8377;' + item.price + '</span>' +
-    '<a class="menu-card-btn" href="https://wa.me/917895743536?text=' + wa + '" target="_blank">Order Karo</a>' +
-    '</div></div></div>';
-}
+const CATS = ["veg-burgers", "nonveg-burgers"];
 
 function loadCat(cat) {
-  var grid = document.getElementById(cat.grid);
-  if (!grid) return;
-  fetch("/content/menu/" + cat.file + ".json")
-    .then(function(r) { return r.json(); })
-    .then(function(items) {
-      grid.innerHTML = items.map(buildCard).join("");
+  fetch(`content/menu/${cat}.json`)
+    .then(r => r.json())
+    .then(items => {
+      const section = document.getElementById(cat);
+      if (!section) return;
+      section.innerHTML = items.map(buildCard).join("");
     })
-    .catch(function(e) {
-      console.error("MenuLoader error:", cat.file, e);
-    });
+    .catch(err => console.error("Error loading", cat, err));
+}
+
+function buildCard(item) {
+  const badge = item.badge
+    ? `<span style="position:absolute;top:8px;left:8px;background:#e63946;color:#fff;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700;z-index:2;">${item.badge}</span>`
+    : "";
+
+  const media = item.image
+    ? `<img src="${item.image}" alt="${item.name}" style="width:100%;height:180px;object-fit:cover;display:block;" loading="lazy" onerror="this.style.display='none'">`
+    : `<div style="font-size:4rem;text-align:center;padding:30px;">🍔</div>`;
+
+  const dot = item.isVeg ? "🟢" : "🔴";
+
+  return `
+    <div class="menu-card">
+      <div style="position:relative;overflow:hidden;border-radius:12px 12px 0 0;">
+        ${badge}
+        ${media}
+      </div>
+      <div class="card-body">
+        <h3 class="card-name">${dot} ${item.name}</h3>
+        <p class="card-desc">${item.description}</p>
+        <div class="card-footer">
+          <span class="card-price">₹${item.price}</span>
+          <button class="add-btn" onclick="addToCart('${item.id}')">+ Cart Mein Daalo</button>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function initMenu() {
