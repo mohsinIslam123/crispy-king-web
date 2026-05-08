@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Crispy Fries",
+      "price": 69,
+      "description": "Golden crispy salted fries",
+      "image": ""
+    },
+    {
+      "name": "Peri Peri Fries",
+      "price": 89,
+      "description": "Spicy peri peri seasoned fries",
+      "image": ""
+    }
+  ]
+}
