@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Margherita Pizza",
+      "price": 199,
+      "description": "Classic tomato sauce with mozzarella cheese",
+      "image": ""
+    },
+    {
+      "name": "Chicken Tikka Pizza",
+      "price": 249,
+      "description": "Spicy chicken tikka with onions and peppers",
+      "image": ""
+    }
+  ]
+}
