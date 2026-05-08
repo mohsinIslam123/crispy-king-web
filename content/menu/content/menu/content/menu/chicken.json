@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Crispy Fried Chicken",
+      "price": 149,
+      "description": "Golden crispy fried chicken pieces",
+      "image": ""
+    },
+    {
+      "name": "Chicken Strips",
+      "price": 129,
+      "description": "Tender chicken strips with dipping sauce",
+      "image": ""
+    }
+  ]
+}
