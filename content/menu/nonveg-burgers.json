@@ -1,52 +1,8 @@
 [
-  {
-    "id": "nvb001",
-    "name": "Crispy Chicken Burger",
-    "price": 149,
-    "description": "Juicy crispy fried chicken patty with fresh lettuce, tomato & mayo in a soft bun.",
-    "category": "nonveg-burgers",
-    "image": "https://i.ibb.co/HfN9tNct/Crispy-Chicken-Burger.jpg",
-    "badge": "Bestseller",
-    "isVeg": false
-  },
-  {
-    "id": "nvb002",
-    "name": "Crispy Chicken Cheese Burger",
-    "price": 179,
-    "description": "Our classic crispy chicken patty loaded with melted cheese, lettuce & special sauce.",
-    "category": "nonveg-burgers",
-    "image": "https://i.ibb.co/j95TDDmZ/Crispy-Chicken-Cheese-Burger.jpg",
-    "badge": "Cheesy",
-    "isVeg": false
-  },
-  {
-    "id": "nvb003",
-    "name": "Fish Burger",
-    "price": 159,
-    "description": "Crispy golden fish fillet with tartar sauce, coleslaw in a toasted sesame bun.",
-    "category": "nonveg-burgers",
-    "image": "https://i.ibb.co/MxgL53V2/Fish-Burger.jpg",
-    "badge": "New",
-    "isVeg": false
-  },
-  {
-    "id": "nvb004",
-    "name": "Fish Cheese Burger",
-    "price": 189,
-    "description": "Golden fish fillet topped with cheese slice, lettuce, onions & creamy tartar sauce.",
-    "category": "nonveg-burgers",
-    "image": "https://i.ibb.co/jkBFJcjD/Fish-Cheese-Burger.jpg",
-    "badge": "",
-    "isVeg": false
-  },
-  {
-    "id": "nvb005",
-    "name": "Twister Burger",
-    "price": 199,
-    "description": "Spicy twisted chicken patty with jalapenos, crispy onions & signature twister sauce.",
-    "category": "nonveg-burgers",
-    "image": "https://i.ibb.co/99LqSNZF/Twister-Burger.jpg",
-    "badge": "Spicy 🌶️",
-    "isVeg": false
-  }
+  {"id":"nvb001","name":"Crispy Chicken Burger","price":79,"description":"Juicy crispy fried chicken patty with fresh lettuce, tomato & mayo in a soft bun.","image":"Crispy-Chicken-Burger.jpeg","category":"nonveg-burgers","badge":"Bestseller","isVeg":false},
+  {"id":"nvb002","name":"Crispy Chicken Cheese Burger","price":89,"description":"Our classic crispy chicken patty loaded with melted cheese, lettuce & special sauce.","image":"Crispy-Chicken-Cheese-Burger.jpeg","category":"nonveg-burgers","badge":"Cheesy","isVeg":false},
+  {"id":"nvb003","name":"Fish Burger","price":110,"description":"Crispy golden fish fillet with tartar sauce, coleslaw in a toasted sesame bun.","image":"Fish-Burger.jpeg","category":"nonveg-burgers","isVeg":false},
+  {"id":"nvb004","name":"Fish Cheese Burger","price":129,"description":"Golden fish fillet topped with cheese slice, lettuce, onions & creamy tartar sauce.","image":"Fish-Cheese-Burger.jpeg","category":"nonveg-burgers","badge":"New","isVeg":false},
+  {"id":"nvb005","name":"Twister Burger","price":129,"description":"Double patty, special sauce, jalapeños — bestseller!","image":"Twister-Burger.jpeg","category":"nonveg-burgers","isVeg":false},
+  {"id":"nvb006","name":"Maharaja Burger","price":149,"description":"Premium large burger — hamare menu ka king!","image":"Maharaja-Burger.jpeg","category":"nonveg-burgers","isVeg":false}
 ]
