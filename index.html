@@ -1952,7 +1952,7 @@ function buildMenuCard(item) {
   card.dataset.name = item.name.toLowerCase();
   card.innerHTML = `
     <div class="menu-card-img" id="img-${slugify(item.name)}">
-      ${photo ? `<img src="${photo}" alt="${item.name}">` : item.emoji}
+      ${item.image ? `<img src="${item.image}" alt="${item.name}">` : item.emoji}
     </div>
     <div class="menu-card-body">
       <div class="menu-card-name">${item.name}</div>
