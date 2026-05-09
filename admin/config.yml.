@@ -2,17 +2,174 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images"
-public_folder: "/images"
+media_folder: "static/uploads"
+public_folder: "/uploads"
 
+# ─── EDITOR SETTINGS ──────────────────────────────────────────────────────────
+locale: "en"
+show_preview_links: true
+
+# ─── MENU COLLECTIONS ─────────────────────────────────────────────────────────
+# Each category = one JSON file at content/menu/{slug}.json
+# The list widget saves items as an array → menu-loader.js reads data.items[]
 collections:
-  - name: "menu"
-    label: "Food Menu"
-    folder: "content/menu"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Item Name", name: "title", widget: "string" }
-      - { label: "Price", name: "price", widget: "number" }
-      - { label: "Food Photo", name: "image", widget: "image" }
-      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "veg-burgers"
+    label: "🥬 Veg Burgers"
+    format: "json"
+    files:
+      - name: "veg-burgers"
+        label: "Veg Burgers"
+        file: "content/menu/veg-burgers.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false, hint: "Leave blank to show emoji fallback" }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false, hint: "e.g. Best Seller, New, Spicy" }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
+
+  - name: "nonveg-burgers"
+    label: "🍔 Non-Veg Burgers"
+    format: "json"
+    files:
+      - name: "nonveg-burgers"
+        label: "Non-Veg Burgers"
+        file: "content/menu/nonveg-burgers.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: false }
+
+  - name: "chicken"
+    label: "🍗 Chicken"
+    format: "json"
+    files:
+      - name: "chicken"
+        label: "Chicken"
+        file: "content/menu/chicken.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: false }
+
+  - name: "fries"
+    label: "🍟 Fries"
+    format: "json"
+    files:
+      - name: "fries"
+        label: "Fries"
+        file: "content/menu/fries.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
+
+  - name: "pizza"
+    label: "🍕 Pizza"
+    format: "json"
+    files:
+      - name: "pizza"
+        label: "Pizza"
+        file: "content/menu/pizza.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
+
+  - name: "wraps"
+    label: "🌯 Wraps"
+    format: "json"
+    files:
+      - name: "wraps"
+        label: "Wraps"
+        file: "content/menu/wraps.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
+
+  - name: "sandwich"
+    label: "🥪 Sandwich"
+    format: "json"
+    files:
+      - name: "sandwich"
+        label: "Sandwich"
+        file: "content/menu/sandwich.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
+
+  - name: "shakes"
+    label: "🥤 Shakes"
+    format: "json"
+    files:
+      - name: "shakes"
+        label: "Shakes"
+        file: "content/menu/shakes.json"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.name}} — ₹{{fields.price}}"
+            fields:
+              - { label: "Name",        name: "name",        widget: "string" }
+              - { label: "Description", name: "description", widget: "text",   required: false }
+              - { label: "Price (₹)",   name: "price",       widget: "number", value_type: "int" }
+              - { label: "Image",       name: "image",       widget: "image",  required: false }
+              - { label: "Badge",       name: "badge",       widget: "string", required: false }
+              - { label: "Is Veg",      name: "isVeg",       widget: "boolean", default: true }
