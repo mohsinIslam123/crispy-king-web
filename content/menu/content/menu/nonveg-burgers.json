@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Chicken Burger",
+      "price": 129,
+      "description": "Juicy chicken patty with fresh lettuce",
+      "image": ""
+    },
+    {
+      "name": "Spicy Chicken Burger",
+      "price": 149,
+      "description": "Extra spicy chicken with jalapenos",
+      "image": ""
+    }
+  ]
+}

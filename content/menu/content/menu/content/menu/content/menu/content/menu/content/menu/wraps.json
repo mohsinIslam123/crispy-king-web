@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Chicken Wrap",
+      "price": 129,
+      "description": "Grilled chicken with fresh veggies in tortilla",
+      "image": ""
+    },
+    {
+      "name": "Paneer Wrap",
+      "price": 109,
+      "description": "Spiced paneer with mint chutney in tortilla",
+      "image": ""
+    }
+  ]
+}

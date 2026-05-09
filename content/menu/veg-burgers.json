@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "name": "Crispy Veg Burger",
+      "price": 99,
+      "description": "Fresh veggies with crispy patty",
+      "image": ""
+    },
+    {
+      "name": "Aloo Cheese Burger",
+      "price": 109,
+      "description": "Spicy aloo patty with melted cheese",
+      "image": "https://i.ibb.co/rfxkwcNT/Aloo-Cheese-Burger.jpg"
+    },
+    {
+      "name": "Aloo Tikki Burger",
+      "price": 99,
+      "description": "Classic aloo tikki with fresh veggies",
+      "image": "https://i.ibb.co/nHzy9MW/Aloo-Tikki-Burger.jpg"
+    },
+    {
+      "name": "Grilled Paneer Tikka Burger",
+      "price": 129,
+      "description": "Grilled paneer tikka with mint chutney",
+      "image": "https://i.ibb.co/Y4z0370J/Grilled-paneer-tikka-burger.jpg"
+    },
+    {
+      "name": "Maharaja Burger",
+      "price": 139,
+      "description": "Royal double patty veg burger",
+      "image": "https://i.ibb.co/ZRBdWykm/Maharaja-Burger.jpg"
+    },
+    {
+      "name": "Paneer Tikka Cheese Burger",
+      "price": 139,
+      "description": "Paneer tikka with extra cheese",
+      "image": "https://i.ibb.co/hFmh1sg3/Paneer-Tikka-Cheese-Burger.jpg"
+    }
+  ]
+}

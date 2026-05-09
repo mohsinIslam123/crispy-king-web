@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "name": "Chocolate Shake",
+      "price": 99,
+      "description": "Rich and creamy chocolate milkshake",
+      "image": ""
+    },
+    {
+      "name": "Strawberry Shake",
+      "price": 99,
+      "description": "Fresh strawberry milkshake with cream",
+      "image": ""
+    }
+  ]
+}
