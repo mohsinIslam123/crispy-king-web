@@ -347,6 +347,7 @@
   .btn-combo:hover { background: #e0001f; transform: scale(1.01); }
   .combo-card.featured .btn-combo { background: var(--gold); color: var(--black); }
   .combo-card.featured .btn-combo:hover { background: #ffea00; }
+  .combo-img { font-size: 42px; text-align: center; padding: 16px 0 10px; letter-spacing: 6px; display: block; }
 
   /* MENU */
   #menu { background: var(--black); }
@@ -1165,6 +1166,7 @@
     <div class="combo-card reveal">
       <span class="combo-num">01</span>
       <span class="combo-badge">Sabse Sasta 🔥</span>
+      <div class="combo-img">🍔🍟🥤</div>
       <div class="combo-name">Entry Pack</div>
       <ul class="combo-items"><li>Aloo Patty Burger</li><li>French Fries</li><li>Cold Drink</li></ul>
       <div class="combo-price">₹109</div>
@@ -1173,6 +1175,7 @@
     <div class="combo-card reveal">
       <span class="combo-num">02</span>
       <span class="combo-badge">Bestseller ⭐</span>
+      <div class="combo-img">🍗🍟🥤</div>
       <div class="combo-name">Chicken Starter</div>
       <ul class="combo-items"><li>Chicken Burger</li><li>French Fries</li><li>Cold Drink</li></ul>
       <div class="combo-price">₹129</div>
@@ -1181,6 +1184,7 @@
     <div class="combo-card reveal">
       <span class="combo-num">03</span>
       <span class="combo-badge">Crispy Favourite</span>
+      <div class="combo-img">🍔🍿🥤</div>
       <div class="combo-name">Popcorn Lover</div>
       <ul class="combo-items"><li>Chicken Burger</li><li>Chicken Popcorn (6pcs)</li><li>Cold Drink</li></ul>
       <div class="combo-price">₹159</div>
@@ -1189,6 +1193,7 @@
     <div class="combo-card reveal">
       <span class="combo-num">04</span>
       <span class="combo-badge">Fish Lovers Choice 🐟</span>
+      <div class="combo-img">🐟🍟🥤</div>
       <div class="combo-name">Fish Special</div>
       <ul class="combo-items"><li>Fish Burger</li><li>Fish Strips (4pcs)</li><li>Regular Fries</li><li>Cold Drink</li></ul>
       <div class="combo-price">₹249</div>
@@ -1197,6 +1202,7 @@
     <div class="combo-card featured reveal">
       <span class="combo-num">05</span>
       <span class="combo-badge">BEST VALUE 👨‍👩‍👧‍👦</span>
+      <div class="combo-img">🍔🍔🍟🥤</div>
       <div class="combo-name">Family Bundle</div>
       <ul class="combo-items"><li>2 Chicken Burgers</li><li>2 Chicken Wraps</li><li>Half Chick Popcorn</li><li>2 French Fries</li><li>4 Cold Drinks</li><li>4 Dip Sauces</li></ul>
       <div class="combo-price">₹666</div>
@@ -1205,6 +1211,7 @@
     <div class="combo-card reveal">
       <span class="combo-num">06</span>
       <span class="combo-badge">PARTY FAVOURITE 🎉</span>
+      <div class="combo-img">🎉🍗🍔🎊</div>
       <div class="combo-name">Party Pack</div>
       <ul class="combo-items"><li>4 Chicken Burgers</li><li>4 Chicken Wraps</li><li>4 Half Chick Popcorn</li><li>4 French Fries</li><li>8 Cold Drinks</li><li>4 Dip Sauces</li></ul>
       <div class="combo-price">₹1300</div>
@@ -1953,7 +1960,8 @@ function buildMenuCard(item) {
   card.dataset.name = item.name.toLowerCase();
   card.innerHTML = `
     <div class="menu-card-img" id="img-${slugify(item.name)}">
-      ${(photo || item.image) ? `<img src="${photo || item.image}" alt="${item.name}" style="width:100%;height:180px;object-fit:cover;display:block;">` : item.emoji}
+      <span style="position:relative;z-index:1;font-size:48px;">${item.emoji}</span>
+      ${(photo || item.image) ? `<img src="${photo || item.image}" alt="${item.name}" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;z-index:2;">` : ''}
     </div>
     <div class="menu-card-body">
       <div class="menu-card-name">${item.name}</div>
