@@ -950,20 +950,21 @@
   .chat-input-row {
     display: flex; align-items: center; gap: 8px;
     padding: 10px 14px; border-top: 1px solid rgba(255,255,255,0.06);
+    background: #0d0d0d;
   }
   .chat-input {
-    flex: 1; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1);
-    color: #fff; padding: 9px 12px; border-radius: 10px; font-size: 13px;
+    flex: 1; background: #1e1e1e; border: 1px solid rgba(255,255,255,0.08);
+    color: #fff; padding: 10px 14px; border-radius: 22px; font-size: 13px;
     font-family: 'Inter', sans-serif; outline: none; transition: border 0.2s;
   }
-  .chat-input:focus { border-color: rgba(255,215,0,0.4); }
-  .chat-input::placeholder { color: rgba(255,255,255,0.35); }
+  .chat-input:focus { border-color: rgba(37,211,102,0.4); }
+  .chat-input::placeholder { color: rgba(255,255,255,0.3); }
   .chat-send-btn {
-    background: var(--crimson); border: none; color: #fff; width: 34px; height: 34px;
-    border-radius: 10px; font-size: 16px; cursor: pointer; transition: all 0.2s;
+    background: #25D366; border: none; color: #fff; width: 38px; height: 38px;
+    border-radius: 50%; font-size: 16px; cursor: pointer; transition: all 0.2s;
     display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
-  .chat-send-btn:hover { background: #e0001f; }
+  .chat-send-btn:hover { background: #1da851; }
 
   /* FAQ SECTION */
   #faq { background: #080808; border-top: 1px solid var(--border); }
@@ -1579,20 +1580,20 @@
 
 
 <!-- AI CHATBOT -->
-<button id="ck-chat-btn" onclick="toggleChat()" aria-label="AI Assistant - Crispy King">
-  🤖
+<button id="ck-chat-btn" onclick="toggleChat()" aria-label="Shakib - Crispy King">
+  💬
   <span class="chat-notif-dot" id="chat-notif-dot"></span>
-  <span class="ck-chat-tooltip">AI Assistant</span>
+  <span class="ck-chat-tooltip">Shakib se baat karo</span>
 </button>
 
-<div id="ck-chatbox" role="dialog" aria-label="Crispy King AI Assistant">
+<div id="ck-chatbox" role="dialog" aria-label="Shakib - Crispy King">
   <div class="chat-head">
-    <div class="chat-head-avatar">👑</div>
+    <div class="chat-head-avatar" style="background:rgba(255,255,255,0.2);font-size:20px;">😄</div>
     <div class="chat-head-info">
-      <div class="chat-head-name">Crispy King AI 🤖</div>
+      <div class="chat-head-name">Shakib</div>
       <div class="chat-head-status">
         <span class="chat-head-status-dot"></span>
-        Hamesha Online | 11AM–11PM
+        Online hoon • Crispy King Team
       </div>
     </div>
     <button class="chat-head-close" onclick="toggleChat()">✕</button>
@@ -2596,7 +2597,7 @@ window.submitBirthday = function() {
   const KB = {
     greeting: {
       t: ['hi','hello','hii','hey','salaam','assalam','namaste','salam','kya haal','helo','halo','kya hal'],
-      r: () => `Assalamualaikum! 👑 Main Crispy King ka AI Assistant hoon!\n\nMain aapki help kar sakta hoon:\n🍔 Menu dekhna\n🎁 Combos & Deals\n📦 Order karna\n🕐 Timing & Delivery\n📍 Location & Address`,
+      r: () => `Assalamualaikum! 😄 Main Shakib hoon, Crispy King ki taraf se!\n\nAapki kya help kar sakta hoon?\n🍔 Menu dekhna\n🎁 Combos & Deals\n📦 Order karna\n🕐 Timing & Delivery\n📍 Location & Address`,
       q: ['🍔 Menu dikhao','🎁 Combo dikhao','📍 Location','🕐 Timing']
     },
     menu: {
@@ -2692,7 +2693,7 @@ window.submitBirthday = function() {
     }
   };
 
-  const DEFAULT_R = `Hmm, thoda aur clearly poochho! 😅\n\nMain aapki help kar sakta hoon:\n🍔 Menu — Burger, Chicken, Pizza, Fries\n🎁 Combo Deals\n📦 Order karna\n🕐 Timing & Delivery\n📍 Location`,
+  const DEFAULT_R = `Hmm, thoda aur clearly poochho! 😅\n\nMain Shakib hoon, help kar sakta hoon:\n🍔 Menu — Burger, Chicken, Pizza, Fries\n🎁 Combo Deals\n📦 Order karna\n🕐 Timing & Delivery\n📍 Location`,
   DEFAULT_Q = ['🍔 Menu','🎁 Combos','📦 Order karo','📍 Location'];
 
   const UPSELLS = {
