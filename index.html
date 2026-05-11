@@ -1228,18 +1228,15 @@
     <p class="section-sub">Fresh banaya, pyaar se pakaya — <em>har plate ek masterpiece hai</em></p>
   </div>
   <div class="gallery-grid max-wrap" id="gallery-grid">
-    <div class="gallery-item large reveal" data-gallery="crispy-chicken">🍗<span class="gallery-label">Crispy Chicken Burger</span></div>
-    <div class="gallery-item reveal" data-gallery="twister">🌀<span class="gallery-label">Twister Burger</span></div>
-    <div class="gallery-item reveal" data-gallery="fries">🍟<span class="gallery-label">Loaded Fries</span></div>
-    <div class="gallery-item reveal" data-gallery="pizza">🍕<span class="gallery-label">Chicken Pizza</span></div>
-    <div class="gallery-item reveal" data-gallery="wings">🌶️<span class="gallery-label">Hot Wings</span></div>
-    <div class="gallery-item reveal" data-gallery="wrap">🌯<span class="gallery-label">Crispy Wrap</span></div>
-    <div class="gallery-item large reveal" data-gallery="family">👨‍👩‍👧‍👦<span class="gallery-label">Family Bundle</span></div>
-    <div class="gallery-item reveal" data-gallery="shake">🥛<span class="gallery-label">Oreo Shake</span></div>
+    <div class="gallery-item large reveal" data-gallery="crispy-chicken"><img src="/Gallery-Crispy-Chicken-Burger.jpeg" alt="Crispy Chicken Burger"><span class="gallery-label">Crispy Chicken Burger</span></div>
+    <div class="gallery-item reveal" data-gallery="twister"><img src="/Gallery-Twister-Burger.jpeg" alt="Twister Burger"><span class="gallery-label">Twister Burger</span></div>
+    <div class="gallery-item reveal" data-gallery="fries"><img src="/Gallery-Loaded-Fries.jpeg" alt="Loaded Fries"><span class="gallery-label">Loaded Fries</span></div>
+    <div class="gallery-item reveal" data-gallery="pizza"><img src="/Gallery-Chicken-Pizza.jpeg" alt="Chicken Pizza"><span class="gallery-label">Chicken Pizza</span></div>
+    <div class="gallery-item reveal" data-gallery="wings"><img src="/Gallery-Hot-Wings.jpeg" alt="Hot Wings"><span class="gallery-label">Hot Wings</span></div>
+    <div class="gallery-item reveal" data-gallery="wrap"><img src="/Gallery-Crispy-Wrap.jpeg" alt="Crispy Wrap"><span class="gallery-label">Crispy Wrap</span></div>
+    <div class="gallery-item large reveal" data-gallery="family"><img src="/Gallery-Family-Bundle.jpeg" alt="Family Bundle"><span class="gallery-label">Family Bundle</span></div>
+    <div class="gallery-item reveal" data-gallery="shake"><img src="/Gallery-Oreo-Shake.jpeg" alt="Oreo Shake"><span class="gallery-label">Oreo Shake</span></div>
   </div>
-  <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:20px">
-    📸 Real photos ke liye Admin Panel mein jao aur upload karo
-  </p>
 </section>
 
 <!-- MENU -->
@@ -2585,15 +2582,7 @@ window.submitBirthday = function() {
 };
 
 // ===== GALLERY PHOTO LOAD =====
-(function() {
-  const saved = JSON.parse(localStorage.getItem('ck_gallery') || '{}');
-  document.querySelectorAll('.gallery-item[data-gallery]').forEach(el => {
-    const key = el.dataset.gallery;
-    if (saved[key]) {
-      el.innerHTML = `<img src="${saved[key]}" alt="${key}"><span class="gallery-label">${el.querySelector('.gallery-label').textContent}</span>`;
-    }
-  });
-})();
+// Photos are now hardcoded directly in HTML — no localStorage needed
 
 // PWA service worker removed (sw.js not deployed)
 
