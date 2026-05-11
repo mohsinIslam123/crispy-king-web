@@ -1830,85 +1830,63 @@
 
 <script>
 // ===== MENU DATA =====
-const menuData = {
-  'veg-burgers': [
-    {name:'Aloo Tikki Burger', price:49, emoji:'🍔', desc:'Classic aloo patty, fresh veggies, special sauce'},
-    {name:'Aloo Cheese Burger', price:59, emoji:'🧀', desc:'Aloo patty with melted cheese slice'},
-    {name:'Paneer Tikka Burger', price:79, emoji:'🍔', desc:'Grilled paneer tikka, mint chutney, crispy lettuce'},
-    {name:'Paneer Tikka Cheese Burger', price:89, emoji:'🧀', desc:'Grilled paneer + cheese slice — dono ek saath!'},
-  ],
-  'nonveg-burgers': [
-    {name:'Crispy Chicken Burger', price:79, emoji:'🍗', desc:'Crispy fried chicken patty, special mayo, fresh bun'},
-    {name:'Crispy Chicken Cheese Burger', price:89, emoji:'🧀', desc:'Crispy chicken + cheese slice — must try!'},
-    {name:'Twister Burger', price:129, emoji:'🌀', desc:'Double patty, special sauce, jalapeños — bestseller!'},
-    {name:'Fish Burger', price:110, emoji:'🐟', desc:'Crispy fish fillet, tartar sauce, fresh veggies'},
-    {name:'Fish Cheese Burger', price:120, emoji:'🐟', desc:'Fish fillet + cheese — ocean ka maza!'},
-    {name:'Maharaja Burger', price:129, emoji:'👑', desc:'Premium large burger — hamare menu ka king!'},
-  ],
-  'chicken': [
-    {name:'Chicken Popcorn (8pc)', price:120, emoji:'🍿', desc:'Crispy bite-sized chicken pieces, perfect snack'},
-    {name:'Chicken Popcorn (16pc)', price:220, emoji:'🍿', desc:'Double serving of crispy chicken popcorn'},
-    {name:'Chicken Boneless (2pc)', price:100, emoji:'🍗', desc:'Juicy boneless chicken, crispy coating'},
-    {name:'Chicken Boneless (4pc)', price:200, emoji:'🍗', desc:'4 pcs boneless chicken — great for sharing'},
-    {name:'Chicken Boneless (8pc)', price:380, emoji:'🍗', desc:'Family size boneless chicken platter'},
-    {name:'Chicken Chizza (2pc)', price:120, emoji:'🍕', desc:'Chicken base pizza — no maida, all chicken!'},
-    {name:'Chicken Chizza (4pc)', price:240, emoji:'🍕', desc:'4 pcs chicken chizza — unique aur tasty'},
-    {name:'Chicken Hot Wings (8pc)', price:160, emoji:'🌶️', desc:'Spicy glazed wings — fire mein banaya!'},
-    {name:'Chicken Hot Wings (16pc)', price:300, emoji:'🌶️', desc:'16 spicy hot wings — party ke liye perfect'},
-    {name:'Chicken Lollipop (6pc)', price:160, emoji:'🍭', desc:'Classic lollipop style, perfectly marinated'},
-    {name:'Chicken Hot Shot (6pc)', price:180, emoji:'🔥', desc:'Extra spicy shots — dare karo!'},
-    {name:'Crispy Drumstick (2pc)', price:100, emoji:'🍗', desc:'Golden crispy drumsticks, juicy inside'},
-    {name:'Fish Strips (4pc)', price:240, emoji:'🐟', desc:'Crispy fish strips, served with dip'},
-    {name:'Fish Strips (8pc)', price:450, emoji:'🐟', desc:'8 pcs fish strips — fish lovers ka paradise'},
-  ],
-  'fries': [
-    {name:'French Fries Half', price:59, emoji:'🍟', desc:'Crispy golden fries, perfectly salted'},
-    {name:'French Fries Full', price:99, emoji:'🍟', desc:'Full serving crispy golden fries'},
-    {name:'Masala Fries Half', price:69, emoji:'🌶️', desc:'Fries with special Indian masala blend'},
-    {name:'Masala Fries Full', price:119, emoji:'🌶️', desc:'Full serving of spicy masala fries'},
-    {name:'Loaded Fries', price:179, emoji:'🍟', desc:'Fries loaded with cheese sauce, toppings & jalapeños'},
-    {name:'Cheese Slice (Add-on)', price:15, emoji:'🧀', desc:'Extra cheese slice for any item'},
-    {name:'Tandoor Dip', price:15, emoji:'🥫', desc:'Special house-made dipping sauce'},
-    {name:'Pizza Toppings (Add-on)', price:25, emoji:'🍕', desc:'Extra toppings for your pizza'},
-  ],
-  'pizza': [
-    {name:'Simply Pizza (Small)', price:80, emoji:'🍕', desc:'Classic cheese pizza on fresh dough'},
-    {name:'Simply Pizza (Large)', price:130, emoji:'🍕', desc:'Large cheese pizza, feeds 2-3 people'},
-    {name:'Veg Delight (Small)', price:90, emoji:'🍕', desc:'Mix veggie pizza — capsicum, onion, tomato'},
-    {name:'Veg Delight (Large)', price:150, emoji:'🍕', desc:'Large veg pizza, loaded with veggies'},
-    {name:'Paneer Pizza (Small)', price:130, emoji:'🍕', desc:'Paneer chunks on a cheesy pizza base'},
-    {name:'Paneer Pizza (Large)', price:249, emoji:'🍕', desc:'Large paneer pizza — paneer lovers ka choice'},
-    {name:'Chicken Pizza (Small)', price:130, emoji:'🍕', desc:'Chicken tikka pieces on cheesy pizza'},
-    {name:'Chicken Pizza (Large)', price:249, emoji:'🍕', desc:'Large chicken pizza — non-veg hit!'},
-    {name:'Special Pizza (Small)', price:150, emoji:'🍕', desc:'Our chef\'s signature combo pizza'},
-    {name:'Special Pizza (Large)', price:289, emoji:'🍕', desc:'Large special pizza — the ultimate experience'},
-    {name:'Tandoori Pizza (Small)', price:130, emoji:'🍕', desc:'Tandoori flavor pizza — desi twist!'},
-    {name:'Tandoori Pizza (Large)', price:249, emoji:'🍕', desc:'Large tandoori pizza with smoky flavors'},
-  ],
-  'wraps': [
-    {name:'Veg Wrap', price:60, emoji:'🌯', desc:'Fresh veggies, sauces in a soft flour wrap'},
-    {name:'Paneer Wrap', price:80, emoji:'🌯', desc:'Grilled paneer, veggies, special chutney'},
-    {name:'Crispy Chicken Wrap', price:80, emoji:'🌯', desc:'Crispy chicken, lettuce, mayo in soft wrap'},
-    {name:'Crispy Chicken Cheese Wrap', price:90, emoji:'🌯', desc:'Chicken wrap with extra cheese — fan favourite!'},
-    {name:'Fish Wrap', price:120, emoji:'🌯', desc:'Fish fillet, tartar sauce, fresh veggies in wrap'},
-  ],
-  'sandwich': [
-    {name:'Veg Sandwich', price:60, emoji:'🥪', desc:'Fresh veggie sandwich with special spread'},
-    {name:'Paneer Sandwich', price:80, emoji:'🥪', desc:'Grilled paneer sandwich — desi delight'},
-    {name:'Chicken Sandwich', price:80, emoji:'🥪', desc:'Crispy chicken in toasted bread'},
-    {name:'Aloo Tikki Subway', price:99, emoji:'🌮', desc:'6-inch sub with aloo tikki, veggies, sauces'},
-    {name:'Paneer Subway', price:140, emoji:'🌮', desc:'6-inch sub with paneer tikka & fresh veggies'},
-    {name:'Chicken Subway', price:140, emoji:'🌮', desc:'6-inch sub with crispy chicken strips'},
-    {name:'Fish Subway', price:160, emoji:'🌮', desc:'6-inch sub with fish fillet & tartar sauce'},
-  ],
-  'shakes': [
-    {name:'Classic Milkshake', price:69, emoji:'🥛', desc:'Rich creamy milkshake — classic goodness'},
-    {name:'Thick Oreo Shake', price:99, emoji:'🍪', desc:'Thick Oreo blended milkshake — irresistible!'},
-    {name:'KitKat Shake', price:99, emoji:'🍫', desc:'KitKat chocolate shake — chocolatey heaven'},
-    {name:'Cold Coffee', price:69, emoji:'☕', desc:'Chilled coffee with ice cream — refreshing!'},
-    {name:'Mojito', price:69, emoji:'🍹', desc:'Fresh lime mojito — cool aur refreshing'},
-  ]
+// ===== CATEGORY EMOJI FALLBACKS (CMS se image na ho toh ye dikhe) =====
+const CATEGORY_EMOJI = {
+  'veg-burgers':    '🥬',
+  'nonveg-burgers': '🍔',
+  'chicken':        '🍗',
+  'fries':          '🍟',
+  'pizza':          '🍕',
+  'wraps':          '🌯',
+  'sandwich':       '🥪',
+  'shakes':         '🥤',
 };
+
+// Dynamic menuData — CMS se fetch hoke yahan store hoga
+let menuData = {};
+
+// ===== DYNAMIC MENU LOADER =====
+async function loadMenuFromCMS() {
+  const categories = ['veg-burgers','nonveg-burgers','chicken','fries','pizza','wraps','sandwich','shakes'];
+
+  // Show loading skeleton in all grids
+  categories.forEach(cat => {
+    const grid = document.getElementById('grid-' + cat);
+    if (grid) grid.innerHTML = '<div style="padding:1.2rem;color:#aaa;text-align:center;font-size:0.9rem">Menu load ho raha hai…</div>';
+  });
+
+  // Fetch all categories in parallel (5 second timeout per request)
+  const fetchWithTimeout = (url) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 5000);
+    return fetch(url, { cache: 'no-cache', signal: controller.signal })
+      .then(r => { clearTimeout(timer); return r.ok ? r.json() : []; })
+      .catch(() => []);
+  };
+
+  const results = await Promise.allSettled(
+    categories.map(cat => fetchWithTimeout('/content/menu/' + cat + '.json'))
+  );
+
+  // Build menuData object
+  results.forEach((result, i) => {
+    const cat = categories[i];
+    let items = result.status === 'fulfilled' ? result.value : [];
+    // Netlify CMS saves either array at root or { items: [...] }
+    if (!Array.isArray(items)) items = items.items || [];
+    // Normalise field names: CMS uses 'description', old code uses 'desc'
+    menuData[cat] = items.map(item => ({
+      name:  item.name  || '',
+      price: item.price || 0,
+      desc:  item.description || item.desc || '',
+      image: item.image || '',
+      _cat:  cat,
+    }));
+  });
+
+  // Render all grids
+  buildMenus();
+}
 
 const reviews = [
   {text:'Crispy King ka Twister Burger toh next level hai! Bahut baar order kar chuka hoon. Har baar ekdum fresh aur tasty milta hai.', name:'Aryan S.', area:'Muradnagar', stars:5, date:'2 din pehle'},
@@ -1946,18 +1924,31 @@ function loadCartFromStorage() {
 function slugify(str) { return str.replace(/[^a-zA-Z0-9]/g, '-'); }
 
 function buildMenuCard(item) {
-  const photo = savedPhotos[item.name];
+  // Priority: 1) CMS uploaded image  2) Admin localStorage photo  3) Category emoji fallback
+  const cmsImage   = item.image || '';
+  const localPhoto = savedPhotos[item.name] || '';
+  const fallback   = CATEGORY_EMOJI[item._cat] || '\u{1F37D}\uFE0F';
+
+  let mediaHtml;
+  if (cmsImage) {
+    mediaHtml = `<img src="${cmsImage}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">${fallback}</span>`;
+  } else if (localPhoto) {
+    mediaHtml = `<img src="${localPhoto}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span style="display:none">${fallback}</span>`;
+  } else {
+    mediaHtml = fallback;
+  }
+
   const card = document.createElement('div');
   card.className = 'menu-card';
   card.dataset.name = item.name.toLowerCase();
   card.innerHTML = `
     <div class="menu-card-img" id="img-${slugify(item.name)}">
-      ${item.image ? `<img src="${item.image}" alt="${item.name}">` : item.emoji}
+      ${mediaHtml}
     </div>
     <div class="menu-card-body">
       <div class="menu-card-name">${item.name}</div>
       <div class="menu-card-desc">${item.desc}</div>
-      <div class="menu-card-price">₹${item.price}</div>
+      <div class="menu-card-price">\u20B9${item.price}</div>
       <button class="btn-add" onclick="addToCart('${item.name.replace(/'/g,"\\'")}', ${item.price})">+ Cart Mein Daalo</button>
     </div>`;
   return card;
@@ -1967,7 +1958,13 @@ function buildMenus() {
   for (const [cat, items] of Object.entries(menuData)) {
     const grid = document.getElementById('grid-' + cat);
     if (!grid) continue;
-    items.forEach(item => grid.appendChild(buildMenuCard(item)));
+    grid.innerHTML = '';
+    if (!items || items.length === 0) {
+      // JSON file doesn't exist yet — CMS mein items add karo
+      grid.innerHTML = '<div style="padding:1.5rem;text-align:center;color:#aaa;font-size:0.88rem">😕 Abhi koi item nahi hai.<br>Admin panel se items add karo.</div>';
+    } else {
+      items.forEach(item => grid.appendChild(buildMenuCard(item)));
+    }
   }
 }
 
@@ -1987,6 +1984,14 @@ function searchMenu(query) {
     return;
   }
 
+  // Guard: agar menu abhi load nahi hua toh user ko batao
+  if (Object.keys(menuData).length === 0) {
+    searchGrid.innerHTML = '<div class="no-results">⏳ Menu load ho raha hai, thoda ruko…</div>';
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    tabs.style.display = 'none';
+    searchPanel.classList.add('active');
+    return;
+  }
   const allItems = Object.values(menuData).flat();
   const results = allItems.filter(i => i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q));
 
@@ -2825,7 +2830,7 @@ function toggleFaq(btn) {
 
 // ===== INIT =====
 document.getElementById('footer-year').textContent = new Date().getFullYear();
-buildMenus();
+loadMenuFromCMS(); // Dynamic fetch from /content/menu/{category}.json
 buildReviews();
 updateStatus();
 loadSaved();
@@ -2847,6 +2852,5 @@ document.getElementById('upi-modal').addEventListener('click', function(e) {
   if (e.target === this) closeUpiModal();
 });
 </script>
-<script src="/menu-loader.js"></script>
 </body>
 </html>
