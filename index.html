@@ -9,6 +9,9 @@
   gtag('config', 'G-077SCQYQBB');
 </script>
 <meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://api.qrserver.com https://crispyking.in; connect-src 'self' https://www.google-analytics.com; frame-src https://maps.google.com; object-src 'none'; base-uri 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crispy King Muradnagar | Best Halal Burger | Every Bite Rules</title>
 <meta name="description" content="Muradnagar ka best halal fast food — Burgers, Wraps, Chicken, Pizza. Free delivery upto 3km. Order on WhatsApp. Crispy King Franchise.">
@@ -1038,17 +1041,11 @@
 }
 </script>
 
-<!-- Google Analytics GA4 — Replace G-XXXXXXXXXX with your actual ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- WhatsApp click tracking via already-loaded GA4 -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
-  // Track WhatsApp clicks
   document.addEventListener('click', function(e) {
     const a = e.target.closest('a[href*="wa.me"]');
-    if (a) gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: a.textContent.trim().substring(0,30) });
+    if (a && typeof gtag === 'function') gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: a.textContent.trim().substring(0,30) });
   });
 </script>
 
@@ -1077,7 +1074,7 @@
       <a href="#faq">FAQ</a>
       <a href="#location">Location</a>
     </div>
-    <a href="https://wa.me/917895743536" target="_blank" class="btn-order-nav">Abhi Order Karo 🍔</a>
+    <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-order-nav">Abhi Order Karo 🍔</a>
     <div class="hamburger" onclick="openMobileMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -1109,7 +1106,7 @@
       <em>Authorised Crispy King Franchise</em> | Near Bilal Masjid, Rawli Road | Burger Near Me
     </p>
     <div class="hero-ctas">
-      <a href="https://wa.me/917895743536" target="_blank" class="btn-primary">🍔 Abhi Order Karo</a>
+      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-primary">🍔 Abhi Order Karo</a>
       <a href="#menu" class="btn-outline">📋 Menu Dekho</a>
     </div>
   </div>
@@ -1330,7 +1327,7 @@
   <span class="countdown-sep">:</span>
   <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-label">Second</span></div>
 </div>
-<a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20aaj%20ka%20special%20offer%20chahiye.%20Please%20confirm%20karein%20🙏" target="_blank" class="btn-offer">Offer Grab Karo 🔥</a>
+<a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20aaj%20ka%20special%20offer%20chahiye.%20Please%20confirm%20karein%20🙏" target="_blank" rel="noopener noreferrer" class="btn-offer">Offer Grab Karo 🔥</a>
   </div>
 </div>
 
@@ -1346,7 +1343,7 @@
   <div class="review-platforms">
     <a href="#" id="zomato-review-btn" class="btn-platform">⭐ Zomato Pe Review Karo</a>
     <a href="#" id="swiggy-review-btn" class="btn-platform">⭐ Swiggy Pe Review Karo</a>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20review%20dena%20tha%20Crispy%20King%20ke%20baare%20mein%20😊" target="_blank" class="btn-platform">💬 WhatsApp Pe Feedback Do</a>
+    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20review%20dena%20tha%20Crispy%20King%20ke%20baare%20mein%20😊" target="_blank" rel="noopener noreferrer" class="btn-platform">💬 WhatsApp Pe Feedback Do</a>
   </div>
 </section>
 
@@ -1424,7 +1421,7 @@
           <!-- Stamps rendered by JS -->
         </div>
         <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:16px" id="loyalty-status-text">Apna pehla order karo aur stamp collect karna shuru karo!</p>
-        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20Loyalty%20Club%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%91%91" target="_blank" class="loyalty-cta">🎁 Loyalty Club Join Karo</a>
+        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20Loyalty%20Club%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%91%91" target="_blank" rel="noopener noreferrer" class="loyalty-cta">🎁 Loyalty Club Join Karo</a>
       </div>
 
 </section>
@@ -1515,12 +1512,12 @@
         </div>
       </div>
 
-      <a href="https://wa.me/917895743536" target="_blank" class="btn-wa-contact">💬 WhatsApp Pe Baat Karo</a>
+      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-wa-contact">💬 WhatsApp Pe Baat Karo</a>
 
       <div class="wa-broadcast-box">
         <h4>📢 Offers Pehle Paao!</h4>
         <p>Hamare WhatsApp Broadcast mein join karo — daily specials, weekend deals, aur exclusive offers sabse pehle milenge!</p>
-        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20ke%20WhatsApp%20Broadcast%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20add%20kar%20dein!" target="_blank" class="btn-wa-broadcast">💬 Broadcast Join Karo — FREE</a>
+        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20ke%20WhatsApp%20Broadcast%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20add%20kar%20dein!" target="_blank" rel="noopener noreferrer" class="btn-wa-broadcast">💬 Broadcast Join Karo — FREE</a>
       </div>
 
       <div class="birthday-box">
@@ -1545,7 +1542,7 @@
         <a href="#" class="nav-logo"><span class="crown" style="font-size:22px">👑</span><span class="nav-logo-text">Crispy <span>King</span></span></a>
         <p class="footer-tagline">Every Bite Rules 👑<br>Muradnagar ka #1 Halal Fast Food.<br>Fresh, tasty, aur 100% halal — Crispy King Authorised Franchise.</p>
         <div class="footer-socials">
-          <a href="https://wa.me/917895743536" target="_blank" class="footer-social-btn" title="WhatsApp">💬</a>
+          <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="WhatsApp">💬</a>
           <a href="#" id="footer-insta" class="footer-social-btn" title="Instagram">📸</a>
           <a href="#" id="footer-swiggy" class="footer-social-btn" title="Swiggy">🔶</a>
           <a href="#" id="footer-zomato" class="footer-social-btn" title="Zomato">🔴</a>
@@ -1575,8 +1572,8 @@
     </div>
     <div class="footer-bottom">
       <p>© <span id="footer-year"></span> <span>Crispy King</span>. Muradnagar, Ghaziabad, UP. Sab Rights Reserved. 👑<br>
-      <a href="https://maps.google.com/?q=Crispy+King+Muradnagar" target="_blank" style="color:var(--gray);font-size:12px;text-decoration:none">📍 Google Maps pe Dekho</a> &nbsp;|&nbsp;
-      <a href="https://wa.me/917895743536" target="_blank" style="color:var(--gray);font-size:12px;text-decoration:none">💬 WhatsApp Order</a> &nbsp;|&nbsp;
+      <a href="https://maps.google.com/?q=Crispy+King+Muradnagar" target="_blank" rel="noopener noreferrer" style="color:var(--gray);font-size:12px;text-decoration:none">📍 Google Maps pe Dekho</a> &nbsp;|&nbsp;
+      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" style="color:var(--gray);font-size:12px;text-decoration:none">💬 WhatsApp Order</a> &nbsp;|&nbsp;
       <span style="font-size:12px;color:rgba(255,255,255,0.25)">Halal Fast Food Muradnagar | Burger Near Me | Pizza Near Me Muradnagar</span></p>
       <p style="margin-top:6px;font-size:12px">Near Bilal Masjid, Rawli Road, Muradnagar | <a href="javascript:void(0)" onclick="openAdmin()" style="color:var(--gray);text-decoration:none">Admin</a></p>
     </div>
@@ -1622,7 +1619,7 @@
     <span>⏰ 11AM–11PM | 🚴 3km Free Delivery</span>
   </div>
   <a href="tel:7895743536" class="sticky-bar-call" title="Call">📞</a>
-  <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20order%20karna%20hai%20%F0%9F%8D%94" target="_blank" class="sticky-bar-btn">Order Karo</a>
+  <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20order%20karna%20hai%20%F0%9F%8D%94" target="_blank" rel="noopener noreferrer" class="sticky-bar-btn">Order Karo</a>
 </div>
 
 <a href="#" id="back-top" aria-label="Back to top">↑</a>
@@ -1631,7 +1628,7 @@
   🛒
   <span id="cart-count">0</span>
 </div>
-<a href="https://wa.me/917895743536" id="wa-bubble" target="_blank">
+<a href="https://wa.me/917895743536" id="wa-bubble" target="_blank" rel="noopener noreferrer">
   💬
   <span class="wa-tooltip">Order Karo 🍔</span>
 </a>
@@ -1826,7 +1823,7 @@
       <div class="exit-code-val">KING20</div>
     </div>
     <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">WhatsApp pe order karte waqt yeh code batao — ₹20 off milega!</p>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20KING20%20promo%20code%20ke%20saath%20order%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20confirm%20karein!" target="_blank" class="btn-exit-order" onclick="closeExitPopup()">💬 Abhi Order Karo — Code Use Karo</a>
+    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20KING20%20promo%20code%20ke%20saath%20order%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20confirm%20karein!" target="_blank" rel="noopener noreferrer" class="btn-exit-order" onclick="closeExitPopup()">💬 Abhi Order Karo — Code Use Karo</a>
     <button class="btn-exit-skip" onclick="closeExitPopup()">Nahi chahiye, skip karo</button>
   </div>
 </div>
@@ -1835,6 +1832,25 @@
 <div id="toast"></div>
 
 <script>
+// ===== SECURITY UTILITIES =====
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function sanitizeUrl(url) {
+  if (!url) return '';
+  try {
+    const u = new URL(url);
+    if (u.protocol !== 'https:' && u.protocol !== 'http:') return '';
+    return url;
+  } catch (e) { return ''; }
+}
+
 // ===== MENU DATA =====
 const menuData = {
   'veg-burgers': [
@@ -1934,8 +1950,17 @@ let savedPhotos = {};
 let adminLocked = false;
 let adminAttempts = 0;
 
-// ===== LOAD SAVED PHOTOS =====
-try { savedPhotos = JSON.parse(localStorage.getItem('ck_photos') || '{}'); } catch(e) { savedPhotos = {}; }
+// ===== LOAD SAVED PHOTOS (validate data URLs) =====
+try {
+  const raw = JSON.parse(localStorage.getItem('ck_photos') || '{}');
+  savedPhotos = {};
+  for (const [k, v] of Object.entries(raw)) {
+    // Only allow base64 data URIs for images
+    if (typeof k === 'string' && typeof v === 'string' && /^data:image\/(jpeg|png|webp|gif);base64,/.test(v)) {
+      savedPhotos[k] = v;
+    }
+  }
+} catch(e) { savedPhotos = {}; }
 
 // ===== CART PERSISTENCE =====
 function saveCartToStorage() {
@@ -1944,7 +1969,21 @@ function saveCartToStorage() {
 function loadCartFromStorage() {
   try {
     const saved = localStorage.getItem('ck_cart');
-    if (saved) { cart = JSON.parse(saved); updateCart(); }
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      // Validate: only allow string keys and numeric price/qty
+      const clean = {};
+      for (const [name, val] of Object.entries(parsed)) {
+        if (typeof name === 'string' && name.length < 200 &&
+            typeof val === 'object' && val !== null &&
+            typeof val.price === 'number' && isFinite(val.price) &&
+            typeof val.qty === 'number' && isFinite(val.qty)) {
+          clean[name] = { price: val.price, qty: val.qty };
+        }
+      }
+      cart = clean;
+      updateCart();
+    }
   } catch(e) { cart = {}; }
 }
 
@@ -1956,16 +1995,21 @@ function buildMenuCard(item) {
   const card = document.createElement('div');
   card.className = 'menu-card';
   card.dataset.name = item.name.toLowerCase();
+  const safeName = escapeHtml(item.name);
+  const safeDesc = escapeHtml(item.desc);
+  const safeEmoji = escapeHtml(item.emoji);
+  const imgSrc = photo || item.image;
+  const safeImgSrc = escapeHtml(imgSrc);
   card.innerHTML = `
     <div class="menu-card-img" id="img-${slugify(item.name)}">
-      <span style="position:relative;z-index:1;font-size:48px;">${item.emoji}</span>
-      ${(photo || item.image) ? `<img src="${photo || item.image}" alt="${item.name}" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;z-index:2;">` : ''}
+      <span style="position:relative;z-index:1;font-size:48px;">${safeEmoji}</span>
+      ${imgSrc ? `<img src="${safeImgSrc}" alt="${safeName}" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;z-index:2;">` : ''}
     </div>
     <div class="menu-card-body">
-      <div class="menu-card-name">${item.name}</div>
-      <div class="menu-card-desc">${item.desc}</div>
+      <div class="menu-card-name">${safeName}</div>
+      <div class="menu-card-desc">${safeDesc}</div>
       <div class="menu-card-price">₹${item.price}</div>
-      <button class="btn-add" onclick="addToCart('${item.name.replace(/'/g,"\\'")}', ${item.price})">+ Cart Mein Daalo</button>
+      <button class="btn-add" onclick="addToCart('${item.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}', ${item.price})">+ Cart Mein Daalo</button>
     </div>`;
   return card;
 }
@@ -2061,17 +2105,19 @@ function updateCart() {
   list.innerHTML = '';
   for (const [name, {price, qty}] of Object.entries(cart)) {
     if (qty === 0) continue;
+    const safeName = escapeHtml(name);
+    const safeNameAttr = name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const row = document.createElement('div');
     row.className = 'cart-item';
     row.innerHTML = `
       <div class="cart-item-info">
-        <div class="cart-item-name">${name}</div>
+        <div class="cart-item-name">${safeName}</div>
         <div class="cart-item-price">₹${price * qty}</div>
       </div>
       <div class="qty-controls">
-        <button class="qty-btn" onclick="changeQty('${name.replace(/'/g,"\\'")}', -1)">−</button>
+        <button class="qty-btn" onclick="changeQty('${safeNameAttr}', -1)">−</button>
         <span class="qty-num">${qty}</span>
-        <button class="qty-btn" onclick="changeQty('${name.replace(/'/g,"\\'")}', 1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${safeNameAttr}', 1)">+</button>
       </div>`;
     list.appendChild(row);
   }
@@ -2168,7 +2214,16 @@ function reorder() {
   try {
     const last = JSON.parse(localStorage.getItem('ck_last_order') || 'null');
     if (!last) { alert('Koi previous order nahi mila!'); return; }
-    cart = JSON.parse(JSON.stringify(last));
+    const clean = {};
+    for (const [name, val] of Object.entries(last)) {
+      if (typeof name === 'string' && name.length < 200 &&
+          typeof val === 'object' && val !== null &&
+          typeof val.price === 'number' && isFinite(val.price) &&
+          typeof val.qty === 'number' && isFinite(val.qty)) {
+        clean[name] = { price: val.price, qty: val.qty };
+      }
+    }
+    cart = clean;
     updateCart();
     showToast('🔄 Last order cart mein wapas aa gaya!');
   } catch(e) { alert('Previous order load nahi hua.'); }
@@ -2309,13 +2364,19 @@ function saveAdmin() {
 
 function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swiggyReview) {
   if (offer) document.getElementById('offer-text').textContent = offer;
+  // Sanitize all URLs to block javascript: and data: injections
+  const safeSwiggy = sanitizeUrl(swiggy);
+  const safeZomato = sanitizeUrl(zomato);
+  const safeInsta = sanitizeUrl(insta);
+  const safeZomatoReview = sanitizeUrl(zomatoReview);
+  const safeSwiggyReview = sanitizeUrl(swiggyReview);
   // Swiggy
   const swiggyEl = document.getElementById('swiggy-link');
-  if (swiggy) { swiggyEl.href = swiggy; swiggyEl.classList.remove('coming-soon'); }
+  if (safeSwiggy) { swiggyEl.href = safeSwiggy; swiggyEl.classList.remove('coming-soon'); }
   else { swiggyEl.href = '#'; swiggyEl.classList.add('coming-soon'); }
   // Zomato
   const zomatoEl = document.getElementById('zomato-link');
-  if (zomato) { zomatoEl.href = zomato; zomatoEl.classList.remove('coming-soon'); }
+  if (safeZomato) { zomatoEl.href = safeZomato; zomatoEl.classList.remove('coming-soon'); }
   else { zomatoEl.href = '#'; zomatoEl.classList.add('coming-soon'); }
   // UPI
   if (upi) {
@@ -2323,19 +2384,19 @@ function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swigg
     document.getElementById('footer-upi-id') && (document.getElementById('footer-upi-id').textContent = upi);
   }
   // Instagram
-  if (insta) { document.getElementById('footer-insta').href = insta; }
+  if (safeInsta) { document.getElementById('footer-insta').href = safeInsta; }
   // Review buttons
   const zRevEl = document.getElementById('zomato-review-btn');
   const sRevEl = document.getElementById('swiggy-review-btn');
-  if (zomatoReview) { zRevEl.href = zomatoReview; zRevEl.classList.remove('disabled'); }
+  if (safeZomatoReview) { zRevEl.href = safeZomatoReview; zRevEl.classList.remove('disabled'); }
   else { zRevEl.href = 'javascript:void(0)'; zRevEl.classList.add('disabled'); zRevEl.onclick = () => showToast('Zomato link abhi set nahi hua — Admin se karwao'); }
-  if (swiggyReview) { sRevEl.href = swiggyReview; sRevEl.classList.remove('disabled'); }
+  if (safeSwiggyReview) { sRevEl.href = safeSwiggyReview; sRevEl.classList.remove('disabled'); }
   else { sRevEl.href = 'javascript:void(0)'; sRevEl.classList.add('disabled'); sRevEl.onclick = () => showToast('Swiggy link abhi set nahi hua — Admin se karwao'); }
   // Footer links
   const fSwiggy = document.getElementById('footer-swiggy');
   const fZomato = document.getElementById('footer-zomato');
-  if (swiggy) fSwiggy.href = swiggy;
-  if (zomato) fZomato.href = zomato;
+  if (safeSwiggy) fSwiggy.href = safeSwiggy;
+  if (safeZomato) fZomato.href = safeZomato;
 }
 
 function uploadMenuPhoto() {
@@ -2349,7 +2410,10 @@ function uploadMenuPhoto() {
     try { localStorage.setItem('ck_photos', JSON.stringify(savedPhotos)); } catch(ex) { alert('Storage full! Purani photos delete karo.'); return; }
     const slug = itemName.replace(/[^a-zA-Z0-9]/g, '-');
     const imgEl = document.getElementById('img-' + slug);
-    if (imgEl) imgEl.innerHTML = `<img src="${e.target.result}" alt="${itemName}">`;
+    if (imgEl) {
+      const safeItemName = escapeHtml(itemName);
+      imgEl.innerHTML = `<img src="${e.target.result}" alt="${safeItemName}">`;
+    }
     showToast('✅ Photo upload ho gayi: ' + itemName);
   };
   reader.readAsDataURL(file);
@@ -2714,9 +2778,22 @@ window.submitBirthday = function() {
     const box = document.getElementById('chat-messages');
     const wrap = document.createElement('div');
     wrap.className = 'chat-msg' + (isUser ? ' user' : '');
-    wrap.innerHTML = `
-      <div class="chat-msg-avatar">${isUser ? '👤' : '🤖'}</div>
-      <div class="chat-bubble">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble';
+    if (isUser) {
+      // User input: always use textContent to prevent XSS
+      bubble.textContent = text;
+    } else {
+      // Bot replies: hardcoded content, safe to format; still escape first then format
+      bubble.innerHTML = escapeHtml(text)
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    }
+    const avatar = document.createElement('div');
+    avatar.className = 'chat-msg-avatar';
+    avatar.textContent = isUser ? '👤' : '🤖';
+    wrap.appendChild(avatar);
+    wrap.appendChild(bubble);
     box.appendChild(wrap);
     box.scrollTop = box.scrollHeight;
   }
