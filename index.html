@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><script async src="https://www.googletagmanager.com/gtag/js?id=G-077SCQYQBB"></script>
+<head><script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-077SCQYQBB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -9,9 +10,6 @@
   gtag('config', 'G-077SCQYQBB');
 </script>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://api.qrserver.com https://crispyking.in; connect-src 'self' https://www.google-analytics.com; frame-src https://maps.google.com; object-src 'none'; base-uri 'self';">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Crispy King Muradnagar | Best Halal Burger | Every Bite Rules</title>
 <meta name="description" content="Muradnagar ka best halal fast food — Burgers, Wraps, Chicken, Pizza. Free delivery upto 3km. Order on WhatsApp. Crispy King Franchise.">
@@ -995,7 +993,6 @@
   @media (max-width: 680px) {
     #ck-chatbox { width: calc(100vw - 20px); right: 10px; bottom: 240px; }
     #ck-chat-btn { right: 24px; bottom: 180px; }
-    #cart-bubble { right: auto; left: 24px; bottom: 110px; }
   }
 
   /* Prefers-reduced-motion */
@@ -1041,11 +1038,17 @@
 }
 </script>
 
-<!-- WhatsApp click tracking via already-loaded GA4 -->
+<!-- Google Analytics GA4 — Replace G-XXXXXXXXXX with your actual ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
+  // Track WhatsApp clicks
   document.addEventListener('click', function(e) {
     const a = e.target.closest('a[href*="wa.me"]');
-    if (a && typeof gtag === 'function') gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: a.textContent.trim().substring(0,30) });
+    if (a) gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: a.textContent.trim().substring(0,30) });
   });
 </script>
 
@@ -1074,7 +1077,7 @@
       <a href="#faq">FAQ</a>
       <a href="#location">Location</a>
     </div>
-    <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-order-nav">Abhi Order Karo 🍔</a>
+    <a href="https://wa.me/917895743536" target="_blank" class="btn-order-nav">Abhi Order Karo 🍔</a>
     <div class="hamburger" onclick="openMobileMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -1106,7 +1109,7 @@
       <em>Authorised Crispy King Franchise</em> | Near Bilal Masjid, Rawli Road | Burger Near Me
     </p>
     <div class="hero-ctas">
-      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-primary">🍔 Abhi Order Karo</a>
+      <a href="https://wa.me/917895743536" target="_blank" class="btn-primary">🍔 Abhi Order Karo</a>
       <a href="#menu" class="btn-outline">📋 Menu Dekho</a>
     </div>
   </div>
@@ -1226,15 +1229,18 @@
     <p class="section-sub">Fresh banaya, pyaar se pakaya — <em>har plate ek masterpiece hai</em></p>
   </div>
   <div class="gallery-grid max-wrap" id="gallery-grid">
-    <div class="gallery-item large reveal" data-gallery="crispy-chicken"><img src="/Gallery-Crispy-Chicken-Burger.jpeg" alt="Crispy Chicken Burger"><span class="gallery-label">Crispy Chicken Burger</span></div>
-    <div class="gallery-item reveal" data-gallery="twister"><img src="/Gallery-Twister-Burger.jpeg" alt="Twister Burger"><span class="gallery-label">Twister Burger</span></div>
-    <div class="gallery-item reveal" data-gallery="fries"><img src="/Gallery-Loaded-Fries.jpeg" alt="Loaded Fries"><span class="gallery-label">Loaded Fries</span></div>
-    <div class="gallery-item reveal" data-gallery="pizza"><img src="/Gallery-Chicken-Pizza.jpeg" alt="Chicken Pizza"><span class="gallery-label">Chicken Pizza</span></div>
-    <div class="gallery-item reveal" data-gallery="wings"><img src="/Gallery-Hot-Wings.jpeg" alt="Hot Wings"><span class="gallery-label">Hot Wings</span></div>
-    <div class="gallery-item reveal" data-gallery="wrap"><img src="/Gallery-Crispy-Wrap.jpeg" alt="Crispy Wrap"><span class="gallery-label">Crispy Wrap</span></div>
-    <div class="gallery-item large reveal" data-gallery="family"><img src="/Gallery-Family-Bundle.jpeg" alt="Family Bundle"><span class="gallery-label">Family Bundle</span></div>
-    <div class="gallery-item reveal" data-gallery="shake"><img src="/Gallery-Oreo-Shake.jpeg" alt="Oreo Shake"><span class="gallery-label">Oreo Shake</span></div>
+    <div class="gallery-item large reveal" data-gallery="crispy-chicken">🍗<span class="gallery-label">Crispy Chicken Burger</span></div>
+    <div class="gallery-item reveal" data-gallery="twister">🌀<span class="gallery-label">Twister Burger</span></div>
+    <div class="gallery-item reveal" data-gallery="fries">🍟<span class="gallery-label">Loaded Fries</span></div>
+    <div class="gallery-item reveal" data-gallery="pizza">🍕<span class="gallery-label">Chicken Pizza</span></div>
+    <div class="gallery-item reveal" data-gallery="wings">🌶️<span class="gallery-label">Hot Wings</span></div>
+    <div class="gallery-item reveal" data-gallery="wrap">🌯<span class="gallery-label">Crispy Wrap</span></div>
+    <div class="gallery-item large reveal" data-gallery="family">👨‍👩‍👧‍👦<span class="gallery-label">Family Bundle</span></div>
+    <div class="gallery-item reveal" data-gallery="shake">🥛<span class="gallery-label">Oreo Shake</span></div>
   </div>
+  <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:20px">
+    📸 Real photos ke liye Admin Panel mein jao aur upload karo
+  </p>
 </section>
 
 <!-- MENU -->
@@ -1327,7 +1333,7 @@
   <span class="countdown-sep">:</span>
   <div class="countdown-unit"><span class="countdown-num" id="cd-s">00</span><span class="countdown-label">Second</span></div>
 </div>
-<a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20aaj%20ka%20special%20offer%20chahiye.%20Please%20confirm%20karein%20🙏" target="_blank" rel="noopener noreferrer" class="btn-offer">Offer Grab Karo 🔥</a>
+<a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20aaj%20ka%20special%20offer%20chahiye.%20Please%20confirm%20karein%20🙏" target="_blank" class="btn-offer">Offer Grab Karo 🔥</a>
   </div>
 </div>
 
@@ -1343,7 +1349,7 @@
   <div class="review-platforms">
     <a href="#" id="zomato-review-btn" class="btn-platform">⭐ Zomato Pe Review Karo</a>
     <a href="#" id="swiggy-review-btn" class="btn-platform">⭐ Swiggy Pe Review Karo</a>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20review%20dena%20tha%20Crispy%20King%20ke%20baare%20mein%20😊" target="_blank" rel="noopener noreferrer" class="btn-platform">💬 WhatsApp Pe Feedback Do</a>
+    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20review%20dena%20tha%20Crispy%20King%20ke%20baare%20mein%20😊" target="_blank" class="btn-platform">💬 WhatsApp Pe Feedback Do</a>
   </div>
 </section>
 
@@ -1421,7 +1427,7 @@
           <!-- Stamps rendered by JS -->
         </div>
         <p style="color:rgba(255,255,255,0.5);font-size:12px;margin-bottom:16px" id="loyalty-status-text">Apna pehla order karo aur stamp collect karna shuru karo!</p>
-        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20Loyalty%20Club%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%91%91" target="_blank" rel="noopener noreferrer" class="loyalty-cta">🎁 Loyalty Club Join Karo</a>
+        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20Loyalty%20Club%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%91%91" target="_blank" class="loyalty-cta">🎁 Loyalty Club Join Karo</a>
       </div>
 
 </section>
@@ -1512,12 +1518,12 @@
         </div>
       </div>
 
-      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="btn-wa-contact">💬 WhatsApp Pe Baat Karo</a>
+      <a href="https://wa.me/917895743536" target="_blank" class="btn-wa-contact">💬 WhatsApp Pe Baat Karo</a>
 
       <div class="wa-broadcast-box">
         <h4>📢 Offers Pehle Paao!</h4>
         <p>Hamare WhatsApp Broadcast mein join karo — daily specials, weekend deals, aur exclusive offers sabse pehle milenge!</p>
-        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20ke%20WhatsApp%20Broadcast%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20add%20kar%20dein!" target="_blank" rel="noopener noreferrer" class="btn-wa-broadcast">💬 Broadcast Join Karo — FREE</a>
+        <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20Crispy%20King%20ke%20WhatsApp%20Broadcast%20mein%20join%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20add%20kar%20dein!" target="_blank" class="btn-wa-broadcast">💬 Broadcast Join Karo — FREE</a>
       </div>
 
       <div class="birthday-box">
@@ -1542,7 +1548,7 @@
         <a href="#" class="nav-logo"><span class="crown" style="font-size:22px">👑</span><span class="nav-logo-text">Crispy <span>King</span></span></a>
         <p class="footer-tagline">Every Bite Rules 👑<br>Muradnagar ka #1 Halal Fast Food.<br>Fresh, tasty, aur 100% halal — Crispy King Authorised Franchise.</p>
         <div class="footer-socials">
-          <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="WhatsApp">💬</a>
+          <a href="https://wa.me/917895743536" target="_blank" class="footer-social-btn" title="WhatsApp">💬</a>
           <a href="#" id="footer-insta" class="footer-social-btn" title="Instagram">📸</a>
           <a href="#" id="footer-swiggy" class="footer-social-btn" title="Swiggy">🔶</a>
           <a href="#" id="footer-zomato" class="footer-social-btn" title="Zomato">🔴</a>
@@ -1572,8 +1578,8 @@
     </div>
     <div class="footer-bottom">
       <p>© <span id="footer-year"></span> <span>Crispy King</span>. Muradnagar, Ghaziabad, UP. Sab Rights Reserved. 👑<br>
-      <a href="https://maps.google.com/?q=Crispy+King+Muradnagar" target="_blank" rel="noopener noreferrer" style="color:var(--gray);font-size:12px;text-decoration:none">📍 Google Maps pe Dekho</a> &nbsp;|&nbsp;
-      <a href="https://wa.me/917895743536" target="_blank" rel="noopener noreferrer" style="color:var(--gray);font-size:12px;text-decoration:none">💬 WhatsApp Order</a> &nbsp;|&nbsp;
+      <a href="https://maps.google.com/?q=Crispy+King+Muradnagar" target="_blank" style="color:var(--gray);font-size:12px;text-decoration:none">📍 Google Maps pe Dekho</a> &nbsp;|&nbsp;
+      <a href="https://wa.me/917895743536" target="_blank" style="color:var(--gray);font-size:12px;text-decoration:none">💬 WhatsApp Order</a> &nbsp;|&nbsp;
       <span style="font-size:12px;color:rgba(255,255,255,0.25)">Halal Fast Food Muradnagar | Burger Near Me | Pizza Near Me Muradnagar</span></p>
       <p style="margin-top:6px;font-size:12px">Near Bilal Masjid, Rawli Road, Muradnagar | <a href="javascript:void(0)" onclick="openAdmin()" style="color:var(--gray);text-decoration:none">Admin</a></p>
     </div>
@@ -1619,7 +1625,7 @@
     <span>⏰ 11AM–11PM | 🚴 3km Free Delivery</span>
   </div>
   <a href="tel:7895743536" class="sticky-bar-call" title="Call">📞</a>
-  <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20order%20karna%20hai%20%F0%9F%8D%94" target="_blank" rel="noopener noreferrer" class="sticky-bar-btn">Order Karo</a>
+  <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20order%20karna%20hai%20%F0%9F%8D%94" target="_blank" class="sticky-bar-btn">Order Karo</a>
 </div>
 
 <a href="#" id="back-top" aria-label="Back to top">↑</a>
@@ -1628,7 +1634,7 @@
   🛒
   <span id="cart-count">0</span>
 </div>
-<a href="https://wa.me/917895743536" id="wa-bubble" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/917895743536" id="wa-bubble" target="_blank">
   💬
   <span class="wa-tooltip">Order Karo 🍔</span>
 </a>
@@ -1648,9 +1654,20 @@
     </div>
   </div>
   <div class="cart-footer">
-    <div class="cart-total">
-      <span>Kul Total</span>
+    <div class="cart-total" style="font-size:14px;opacity:0.7;margin-bottom:4px">
+      <span>Items Total</span>
+      <span id="cart-subtotal-display">₹0</span>
+    </div>
+    <div class="cart-total" style="font-size:14px;opacity:0.7;margin-bottom:4px">
+      <span>🛵 Delivery</span>
+      <span id="cart-delivery-display">₹0</span>
+    </div>
+    <div class="cart-total" style="border-top:1px solid rgba(255,215,0,0.2);padding-top:10px;margin-top:4px">
+      <span>Grand Total</span>
       <span id="cart-total-display">₹0</span>
+    </div>
+    <div id="min-order-warning" style="display:none;color:#ff6b6b;font-size:12px;text-align:center;margin-bottom:8px">
+      ⚠️ Minimum order ₹400 hai. ₹<span id="min-order-remaining">0</span> aur ka order karo.
     </div>
     <div class="cart-fields">
       <input type="text" class="cart-input" id="cart-name" placeholder="Aapka Naam *">
@@ -1823,7 +1840,7 @@
       <div class="exit-code-val">KING20</div>
     </div>
     <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">WhatsApp pe order karte waqt yeh code batao — ₹20 off milega!</p>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20KING20%20promo%20code%20ke%20saath%20order%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20confirm%20karein!" target="_blank" rel="noopener noreferrer" class="btn-exit-order" onclick="closeExitPopup()">💬 Abhi Order Karo — Code Use Karo</a>
+    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20KING20%20promo%20code%20ke%20saath%20order%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20confirm%20karein!" target="_blank" class="btn-exit-order" onclick="closeExitPopup()">💬 Abhi Order Karo — Code Use Karo</a>
     <button class="btn-exit-skip" onclick="closeExitPopup()">Nahi chahiye, skip karo</button>
   </div>
 </div>
@@ -1832,25 +1849,6 @@
 <div id="toast"></div>
 
 <script>
-// ===== SECURITY UTILITIES =====
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-function sanitizeUrl(url) {
-  if (!url) return '';
-  try {
-    const u = new URL(url);
-    if (u.protocol !== 'https:' && u.protocol !== 'http:') return '';
-    return url;
-  } catch (e) { return ''; }
-}
-
 // ===== MENU DATA =====
 const menuData = {
   'veg-burgers': [
@@ -1885,17 +1883,17 @@ const menuData = {
   ],
   'fries': [
     {name:'French Fries Half', price:59, emoji:'🍟', image:'/French-Fries-Half.jpeg', desc:'Crispy golden fries, perfectly salted'},
-    {name:'French Fries Full', price:99, emoji:'🍟', image:'/French-Fries-Full.jpeg', desc:'Full serving crispy golden fries'},
+    {name:'French Fries Full', price:99, emoji:'🍟', image:'/French-Fries-Half.jpeg', desc:'Full serving crispy golden fries'},
     {name:'Masala Fries Half', price:69, emoji:'🌶️', image:'/Masala-Fries.jpeg', desc:'Fries with special Indian masala blend'},
     {name:'Masala Fries Full', price:119, emoji:'🌶️', image:'/Masala-Fries.jpeg', desc:'Full serving of spicy masala fries'},
     {name:'Loaded Fries', price:179, emoji:'🍟', image:'/Loaded-Fries.jpeg', desc:'Fries loaded with cheese sauce, toppings & jalapeños'},
     {name:'Cheese Slice (Add-on)', price:15, emoji:'🧀', image:'/Cheese-Slice-Add-on.jpeg', desc:'Extra cheese slice for any item'},
     {name:'Tandoor Dip', price:15, emoji:'🥫', image:'/TandoorDip.jpeg', desc:'Special house-made dipping sauce'},
-    {name:'Pizza Toppings (Add-on)', price:25, emoji:'🍕', image:'/Pizza-Toppings-Add-on.jpeg', desc:'Extra toppings for your pizza'},
+    {name:'Pizza Toppings (Add-on)', price:25, emoji:'🍕', desc:'Extra toppings for your pizza'},
   ],
   'pizza': [
     {name:'Simply Pizza (Small)', price:80, emoji:'🍕', image:'/Simply-Pizza-Small.jpeg', desc:'Classic cheese pizza on fresh dough'},
-    {name:'Simply Pizza (Large)', price:130, emoji:'🍕', image:'/Simply-Pizza-Large.jpeg', desc:'Large cheese pizza, feeds 2-3 people'},
+    {name:'Simply Pizza (Large)', price:130, emoji:'🍕', image:'/Simply-Pizza-Small.jpeg', desc:'Large cheese pizza, feeds 2-3 people'},
     {name:'Veg Delight (Small)', price:90, emoji:'🍕', image:'/Veg-Delight.jpeg', desc:'Mix veggie pizza — capsicum, onion, tomato'},
     {name:'Veg Delight (Large)', price:150, emoji:'🍕', image:'/Veg-Delight.jpeg', desc:'Large veg pizza, loaded with veggies'},
     {name:'Paneer Pizza (Small)', price:130, emoji:'🍕', image:'/Paneer-Pizza.jpeg', desc:'Paneer chunks on a cheesy pizza base'},
@@ -1945,22 +1943,35 @@ const reviews = [
 
 // ===== STATE =====
 let cart = {};
+
+// ===== CONFIG — sirf yahan change karo =====
+const CONFIG = {
+  RAZORPAY_KEY: 'rzp_live_5mCNiLvas0j0K', // Razorpay Live Key ID
+  WHATSAPP: '918979913231',                 // Order WhatsApp number
+  RESTAURANT_LAT: 28.7739,                  // Crispy King latitude
+  RESTAURANT_LNG: 77.5044,                  // Crispy King longitude
+  DELIVERY_RADIUS_KM: 3,                    // Max delivery distance
+  DELIVERY_CHARGE: 30,                      // Delivery charge (₹)
+  MIN_ORDER: 400                            // Minimum order value (₹)
+};
+
+// ===== HAVERSINE DISTANCE (km) =====
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2)**2 +
+    Math.cos(lat1 * Math.PI/180) * Math.cos(lat2 * Math.PI/180) *
+    Math.sin(dLon/2)**2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
 let selectedPayment = 'cod';
 let savedPhotos = {};
 let adminLocked = false;
 let adminAttempts = 0;
 
-// ===== LOAD SAVED PHOTOS (validate data URLs) =====
-try {
-  const raw = JSON.parse(localStorage.getItem('ck_photos') || '{}');
-  savedPhotos = {};
-  for (const [k, v] of Object.entries(raw)) {
-    // Only allow base64 data URIs for images
-    if (typeof k === 'string' && typeof v === 'string' && /^data:image\/(jpeg|png|webp|gif);base64,/.test(v)) {
-      savedPhotos[k] = v;
-    }
-  }
-} catch(e) { savedPhotos = {}; }
+// ===== LOAD SAVED PHOTOS =====
+try { savedPhotos = JSON.parse(localStorage.getItem('ck_photos') || '{}'); } catch(e) { savedPhotos = {}; }
 
 // ===== CART PERSISTENCE =====
 function saveCartToStorage() {
@@ -1969,21 +1980,7 @@ function saveCartToStorage() {
 function loadCartFromStorage() {
   try {
     const saved = localStorage.getItem('ck_cart');
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Validate: only allow string keys and numeric price/qty
-      const clean = {};
-      for (const [name, val] of Object.entries(parsed)) {
-        if (typeof name === 'string' && name.length < 200 &&
-            typeof val === 'object' && val !== null &&
-            typeof val.price === 'number' && isFinite(val.price) &&
-            typeof val.qty === 'number' && isFinite(val.qty)) {
-          clean[name] = { price: val.price, qty: val.qty };
-        }
-      }
-      cart = clean;
-      updateCart();
-    }
+    if (saved) { cart = JSON.parse(saved); updateCart(); }
   } catch(e) { cart = {}; }
 }
 
@@ -1995,21 +1992,16 @@ function buildMenuCard(item) {
   const card = document.createElement('div');
   card.className = 'menu-card';
   card.dataset.name = item.name.toLowerCase();
-  const safeName = escapeHtml(item.name);
-  const safeDesc = escapeHtml(item.desc);
-  const safeEmoji = escapeHtml(item.emoji);
-  const imgSrc = photo || item.image;
-  const safeImgSrc = escapeHtml(imgSrc);
   card.innerHTML = `
     <div class="menu-card-img" id="img-${slugify(item.name)}">
-      <span style="position:relative;z-index:1;font-size:48px;">${safeEmoji}</span>
-      ${imgSrc ? `<img src="${safeImgSrc}" alt="${safeName}" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;z-index:2;">` : ''}
+      <span style="position:relative;z-index:1;font-size:48px;">${item.emoji}</span>
+      ${(photo || item.image) ? `<img src="${photo || item.image}" alt="${item.name}" onerror="this.style.display='none'" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:block;z-index:2;">` : ''}
     </div>
     <div class="menu-card-body">
-      <div class="menu-card-name">${safeName}</div>
-      <div class="menu-card-desc">${safeDesc}</div>
+      <div class="menu-card-name">${item.name}</div>
+      <div class="menu-card-desc">${item.desc}</div>
       <div class="menu-card-price">₹${item.price}</div>
-      <button class="btn-add" onclick="addToCart('${item.name.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}', ${item.price})">+ Cart Mein Daalo</button>
+      <button class="btn-add" onclick="addToCart('${item.name.replace(/'/g,"\\'")}', ${item.price})">+ Cart Mein Daalo</button>
     </div>`;
   return card;
 }
@@ -2094,9 +2086,25 @@ function addToCart(name, price) {
 
 function updateCart() {
   const count = Object.values(cart).reduce((s, i) => s + i.qty, 0);
-  const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+  const subtotal = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+  const delivery = subtotal > 0 ? CONFIG.DELIVERY_CHARGE : 0;
+  const grandTotal = subtotal + delivery;
+
   document.getElementById('cart-count').textContent = count;
-  document.getElementById('cart-total-display').textContent = '₹' + total;
+  document.getElementById('cart-subtotal-display').textContent = '₹' + subtotal;
+  document.getElementById('cart-delivery-display').textContent = subtotal > 0 ? '₹' + delivery : '₹0';
+  document.getElementById('cart-total-display').textContent = '₹' + grandTotal;
+
+  // Min order warning
+  const warning = document.getElementById('min-order-warning');
+  const remaining = document.getElementById('min-order-remaining');
+  if (subtotal > 0 && subtotal < CONFIG.MIN_ORDER) {
+    warning.style.display = 'block';
+    remaining.textContent = CONFIG.MIN_ORDER - subtotal;
+  } else {
+    warning.style.display = 'none';
+  }
+
   const list = document.getElementById('cart-items-list');
   if (count === 0) {
     list.innerHTML = '<div class="cart-empty"><span class="empty-icon">🍔</span><p>Cart khaali hai!<br>Menu se kuch chunno.</p></div>';
@@ -2105,19 +2113,17 @@ function updateCart() {
   list.innerHTML = '';
   for (const [name, {price, qty}] of Object.entries(cart)) {
     if (qty === 0) continue;
-    const safeName = escapeHtml(name);
-    const safeNameAttr = name.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
     const row = document.createElement('div');
     row.className = 'cart-item';
     row.innerHTML = `
       <div class="cart-item-info">
-        <div class="cart-item-name">${safeName}</div>
+        <div class="cart-item-name">${name}</div>
         <div class="cart-item-price">₹${price * qty}</div>
       </div>
       <div class="qty-controls">
-        <button class="qty-btn" onclick="changeQty('${safeNameAttr}', -1)">−</button>
+        <button class="qty-btn" onclick="changeQty('${name.replace(/'/g,"\\'")}', -1)">−</button>
         <span class="qty-num">${qty}</span>
-        <button class="qty-btn" onclick="changeQty('${safeNameAttr}', 1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${name.replace(/'/g,"\\'")}', 1)">+</button>
       </div>`;
     list.appendChild(row);
   }
@@ -2160,11 +2166,75 @@ function placeOrder() {
   if (!addr) { alert('Delivery address daalo!'); return; }
   const count = Object.values(cart).reduce((s, i) => s + i.qty, 0);
   if (count === 0) { alert('Cart khaali hai!'); return; }
-  if (selectedPayment === 'upi') {
-    openUpiModal();
-  } else {
-    sendWhatsApp('Cash on Delivery');
+
+  const subtotal = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+
+  // Min order check
+  if (subtotal < CONFIG.MIN_ORDER) {
+    alert(`Minimum order ₹${CONFIG.MIN_ORDER} hai. Abhi ₹${subtotal} ka order hai — ₹${CONFIG.MIN_ORDER - subtotal} aur ka item add karo.`);
+    return;
   }
+
+  // Distance check
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        const dist = haversineDistance(
+          pos.coords.latitude, pos.coords.longitude,
+          CONFIG.RESTAURANT_LAT, CONFIG.RESTAURANT_LNG
+        );
+        if (dist > CONFIG.DELIVERY_RADIUS_KM) {
+          alert(`Aap Crispy King se ${dist.toFixed(1)} km door hain. Hum sirf ${CONFIG.DELIVERY_RADIUS_KM} km tak deliver karte hain. Sorry!`);
+          return;
+        }
+        // Distance OK - proceed
+        processPayment(name, addr, subtotal);
+      },
+      function(err) {
+        // Location denied - proceed with warning
+        const confirmed = confirm(`Location access nahi mili. Kya aap confirm karte hain ki aap Crispy King Muradnagar ke ${CONFIG.DELIVERY_RADIUS_KM} km radius mein hain?`);
+        if (confirmed) processPayment(name, addr, subtotal);
+      },
+      { timeout: 8000 }
+    );
+  } else {
+    // No geolocation support
+    processPayment(name, addr, subtotal);
+  }
+}
+
+function processPayment(name, addr, subtotal) {
+  if (selectedPayment === 'upi') {
+    openRazorpay(name, addr, subtotal);
+  } else {
+    sendWhatsApp('Cash on Delivery', null, subtotal);
+  }
+}
+
+// ===== RAZORPAY PAYMENT =====
+function openRazorpay(name, addr, subtotal) {
+  const grandTotal = subtotal + CONFIG.DELIVERY_CHARGE;
+  const options = {
+    key: CONFIG.RAZORPAY_KEY,
+    amount: grandTotal * 100, // paise mein
+    currency: 'INR',
+    name: 'Crispy King Muradnagar',
+    description: 'Food Order',
+    image: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23C0001A" rx="20"/><text y=".9em" font-size="70" x="15">👑</text></svg>',
+    handler: function(response) {
+      sendWhatsApp('Razorpay UPI ✅', response.razorpay_payment_id, subtotal);
+    },
+    prefill: { name: name },
+    notes: { address: addr },
+    theme: { color: '#C0001A' },
+    modal: {
+      ondismiss: function() {
+        showToast('Payment cancel ho gaya. Dobara try karo ya COD chunno.');
+      }
+    }
+  };
+  const rzp = new Razorpay(options);
+  rzp.open();
 }
 
 // ===== UPI MODAL =====
@@ -2193,17 +2263,20 @@ function upiDone() {
 }
 
 // ===== WHATSAPP ORDER =====
-function sendWhatsApp(paymentMethod) {
+function sendWhatsApp(paymentMethod, paymentId, subtotal) {
   const name = document.getElementById('cart-name').value.trim();
   const addr = document.getElementById('cart-address').value.trim();
-  const total = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+  if (!subtotal) subtotal = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
+  const delivery = CONFIG.DELIVERY_CHARGE;
+  const grandTotal = subtotal + delivery;
   let items = '';
   for (const [n, {price, qty}] of Object.entries(cart)) {
     if (qty > 0) items += `\n• ${n} x${qty} — ₹${price * qty}`;
   }
+  const paymentLine = paymentId ? `💳 Payment ID: ${paymentId}` : `💳 Payment: ${paymentMethod}`;
   localStorage.setItem('ck_last_order', JSON.stringify(cart));
-  const msg = encodeURIComponent(`Assalamualaikum Crispy King! 🙏\n\nMaine website se order kiya hai:\n${items}\n\n💰 Kul Total: ₹${total}\n💳 Payment: ${paymentMethod}\n\n👤 Naam: ${name}\n📍 Address: ${addr}\n\nPlease confirm karein. Shukriya! 🍔👑`);
-  window.open(`https://wa.me/917895743536?text=${msg}`, '_blank');
+  const msg = encodeURIComponent(`Assalamualaikum Crispy King! 🙏\n\nNaya Order:\n${items}\n\n🧾 Items Total: ₹${subtotal}\n🛵 Delivery: ₹${delivery}\n💰 Grand Total: ₹${grandTotal}\n${paymentLine}\n\n👤 Naam: ${name}\n📍 Address: ${addr}\n\nPlease confirm karein. Shukriya! 🍔👑`);
+  window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`, '_blank');
   cart = {};
   updateCart();
   saveCartToStorage();
@@ -2214,16 +2287,7 @@ function reorder() {
   try {
     const last = JSON.parse(localStorage.getItem('ck_last_order') || 'null');
     if (!last) { alert('Koi previous order nahi mila!'); return; }
-    const clean = {};
-    for (const [name, val] of Object.entries(last)) {
-      if (typeof name === 'string' && name.length < 200 &&
-          typeof val === 'object' && val !== null &&
-          typeof val.price === 'number' && isFinite(val.price) &&
-          typeof val.qty === 'number' && isFinite(val.qty)) {
-        clean[name] = { price: val.price, qty: val.qty };
-      }
-    }
-    cart = clean;
+    cart = JSON.parse(JSON.stringify(last));
     updateCart();
     showToast('🔄 Last order cart mein wapas aa gaya!');
   } catch(e) { alert('Previous order load nahi hua.'); }
@@ -2364,19 +2428,13 @@ function saveAdmin() {
 
 function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swiggyReview) {
   if (offer) document.getElementById('offer-text').textContent = offer;
-  // Sanitize all URLs to block javascript: and data: injections
-  const safeSwiggy = sanitizeUrl(swiggy);
-  const safeZomato = sanitizeUrl(zomato);
-  const safeInsta = sanitizeUrl(insta);
-  const safeZomatoReview = sanitizeUrl(zomatoReview);
-  const safeSwiggyReview = sanitizeUrl(swiggyReview);
   // Swiggy
   const swiggyEl = document.getElementById('swiggy-link');
-  if (safeSwiggy) { swiggyEl.href = safeSwiggy; swiggyEl.classList.remove('coming-soon'); }
+  if (swiggy) { swiggyEl.href = swiggy; swiggyEl.classList.remove('coming-soon'); }
   else { swiggyEl.href = '#'; swiggyEl.classList.add('coming-soon'); }
   // Zomato
   const zomatoEl = document.getElementById('zomato-link');
-  if (safeZomato) { zomatoEl.href = safeZomato; zomatoEl.classList.remove('coming-soon'); }
+  if (zomato) { zomatoEl.href = zomato; zomatoEl.classList.remove('coming-soon'); }
   else { zomatoEl.href = '#'; zomatoEl.classList.add('coming-soon'); }
   // UPI
   if (upi) {
@@ -2384,19 +2442,19 @@ function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swigg
     document.getElementById('footer-upi-id') && (document.getElementById('footer-upi-id').textContent = upi);
   }
   // Instagram
-  if (safeInsta) { document.getElementById('footer-insta').href = safeInsta; }
+  if (insta) { document.getElementById('footer-insta').href = insta; }
   // Review buttons
   const zRevEl = document.getElementById('zomato-review-btn');
   const sRevEl = document.getElementById('swiggy-review-btn');
-  if (safeZomatoReview) { zRevEl.href = safeZomatoReview; zRevEl.classList.remove('disabled'); }
+  if (zomatoReview) { zRevEl.href = zomatoReview; zRevEl.classList.remove('disabled'); }
   else { zRevEl.href = 'javascript:void(0)'; zRevEl.classList.add('disabled'); zRevEl.onclick = () => showToast('Zomato link abhi set nahi hua — Admin se karwao'); }
-  if (safeSwiggyReview) { sRevEl.href = safeSwiggyReview; sRevEl.classList.remove('disabled'); }
+  if (swiggyReview) { sRevEl.href = swiggyReview; sRevEl.classList.remove('disabled'); }
   else { sRevEl.href = 'javascript:void(0)'; sRevEl.classList.add('disabled'); sRevEl.onclick = () => showToast('Swiggy link abhi set nahi hua — Admin se karwao'); }
   // Footer links
   const fSwiggy = document.getElementById('footer-swiggy');
   const fZomato = document.getElementById('footer-zomato');
-  if (safeSwiggy) fSwiggy.href = safeSwiggy;
-  if (safeZomato) fZomato.href = safeZomato;
+  if (swiggy) fSwiggy.href = swiggy;
+  if (zomato) fZomato.href = zomato;
 }
 
 function uploadMenuPhoto() {
@@ -2410,10 +2468,7 @@ function uploadMenuPhoto() {
     try { localStorage.setItem('ck_photos', JSON.stringify(savedPhotos)); } catch(ex) { alert('Storage full! Purani photos delete karo.'); return; }
     const slug = itemName.replace(/[^a-zA-Z0-9]/g, '-');
     const imgEl = document.getElementById('img-' + slug);
-    if (imgEl) {
-      const safeItemName = escapeHtml(itemName);
-      imgEl.innerHTML = `<img src="${e.target.result}" alt="${safeItemName}">`;
-    }
+    if (imgEl) imgEl.innerHTML = `<img src="${e.target.result}" alt="${itemName}">`;
     showToast('✅ Photo upload ho gayi: ' + itemName);
   };
   reader.readAsDataURL(file);
@@ -2647,7 +2702,15 @@ window.submitBirthday = function() {
 };
 
 // ===== GALLERY PHOTO LOAD =====
-// Photos are now hardcoded directly in HTML — no localStorage needed
+(function() {
+  const saved = JSON.parse(localStorage.getItem('ck_gallery') || '{}');
+  document.querySelectorAll('.gallery-item[data-gallery]').forEach(el => {
+    const key = el.dataset.gallery;
+    if (saved[key]) {
+      el.innerHTML = `<img src="${saved[key]}" alt="${key}"><span class="gallery-label">${el.querySelector('.gallery-label').textContent}</span>`;
+    }
+  });
+})();
 
 // PWA service worker removed (sw.js not deployed)
 
@@ -2778,22 +2841,9 @@ window.submitBirthday = function() {
     const box = document.getElementById('chat-messages');
     const wrap = document.createElement('div');
     wrap.className = 'chat-msg' + (isUser ? ' user' : '');
-    const bubble = document.createElement('div');
-    bubble.className = 'chat-bubble';
-    if (isUser) {
-      // User input: always use textContent to prevent XSS
-      bubble.textContent = text;
-    } else {
-      // Bot replies: hardcoded content, safe to format; still escape first then format
-      bubble.innerHTML = escapeHtml(text)
-        .replace(/\n/g, '<br>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    }
-    const avatar = document.createElement('div');
-    avatar.className = 'chat-msg-avatar';
-    avatar.textContent = isUser ? '👤' : '🤖';
-    wrap.appendChild(avatar);
-    wrap.appendChild(bubble);
+    wrap.innerHTML = `
+      <div class="chat-msg-avatar">${isUser ? '👤' : '🤖'}</div>
+      <div class="chat-bubble">${text.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
     box.appendChild(wrap);
     box.scrollTop = box.scrollHeight;
   }
