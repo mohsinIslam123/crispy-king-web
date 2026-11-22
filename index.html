@@ -434,8 +434,9 @@
     border-radius: 16px; padding: 20px; position: relative; display: flex; flex-direction: column;
     transition: all 0.3s; overflow: hidden; cursor: pointer;
   }
+  /* Decorative glow only. pointer-events:none so it never sits on top of the Add button and swallows taps (opacity:0 does not stop hit-testing). */
   .combo-card::before {
-    content:''; position:absolute; inset:0; border-radius:18px;
+    content:''; position:absolute; inset:0; border-radius:18px; pointer-events: none;
     background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.03), transparent 70%);
     transition: opacity 0.3s; opacity: 0;
   }
@@ -513,27 +514,6 @@
   .about-text p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
   .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
   .about-tag { background: var(--card); border: 1px solid var(--border); color: rgba(255,255,255,0.75); padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-
-  /* REVIEWS */
-  #reviews { background: #060606; }
-  .reviews-track-wrap { overflow: hidden; max-width: 1200px; margin: 0 auto 40px; position: relative; }
-  .reviews-track-wrap::before, .reviews-track-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
-  .reviews-track-wrap::before { left:0; background: linear-gradient(to right, #060606, transparent); }
-  .reviews-track-wrap::after { right:0; background: linear-gradient(to left, #060606, transparent); }
-  .reviews-track { display: flex; gap: 20px; animation: reviewScroll 32s linear infinite; width: max-content; }
-  .reviews-track:hover { animation-play-state: paused; }
-  @keyframes reviewScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-  .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; width: 300px; flex-shrink: 0; }
-  .review-verified { font-size: 11px; color: #4ade80; background: rgba(0,200,80,0.1); border: 1px solid rgba(0,200,80,0.2); padding: 3px 8px; border-radius: 50px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
-  .review-stars { color: var(--gold); font-size: 16px; margin-bottom: 10px; }
-  .review-text { color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 14px; font-style: italic; }
-  .review-author { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
-  .review-date { color: var(--gray); font-size: 12px; }
-  .review-platforms { display: flex; gap: 16px; justify-content: center; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-  .btn-platform { padding: 14px 28px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--white); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .btn-platform:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-  .btn-platform.disabled { opacity: 0.5; cursor: default; }
-  .btn-platform.disabled:hover { transform: none; border-color: var(--border); color: var(--white); }
 
   /* OFFER BANNER */
   #offer-banner { background: linear-gradient(135deg, var(--crimson), #8a0012); padding: 50px 5%; text-align: center; position: relative; overflow: hidden; }
@@ -742,7 +722,6 @@
     section { padding: 60px 5%; }
     #cart-drawer { width: 100%; right: -100%; }
     .hero-badge-halal { display: none; }
-    .review-platforms { flex-direction: column; align-items: center; }
     .payment-options { grid-template-columns: 1fr 1fr; }
     .upi-app-icons { flex-wrap: wrap; }
   }
@@ -828,7 +807,7 @@
   @media print {
     #navbar, #status-banner, #float-stack,
     #back-top, #sticky-order-bar, .hero-ctas, footer, .btn-add,
-    #social-proof-pop, .ticker-wrap, #combos, #reviews,
+    #social-proof-pop, .ticker-wrap, #combos,
     #about, #delivery, #location, #offer-banner, #faq { display:none!important; }
     body { background: #fff; color: #000; }
     .menu-card { border: 1px solid #ddd; break-inside: avoid; }
@@ -852,32 +831,6 @@
   .owner-info .owner-title { color: var(--gold); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
   .owner-info p { color: rgba(255,255,255,0.65); font-size: 13px; line-height: 1.7; }
   @media (max-width: 600px) { .owner-card { flex-direction: column; text-align: center; } }
-
-  /* ===== EXIT INTENT POPUP ===== */
-  #exit-popup {
-    display: none; position: fixed; inset: 0; z-index: 9999998;
-    background: rgba(0,0,0,0.88); align-items: center; justify-content: center; padding: 20px;
-  }
-  #exit-popup.show { display: flex; }
-  .exit-box {
-    background: #111; border: 1px solid rgba(255,215,0,0.25); border-radius: 24px;
-    padding: 40px 36px; max-width: 420px; width: 100%; text-align: center;
-    position: relative; animation: popIn 0.4s cubic-bezier(0.16,1,0.3,1);
-  }
-  @keyframes popIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
-  .exit-crown { font-size: 56px; display: block; margin-bottom: 12px; }
-  .exit-badge { background: var(--crimson); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; letter-spacing: 1px; display: inline-block; margin-bottom: 16px; font-family: 'Poppins', sans-serif; }
-  .exit-title { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 26px; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
-  .exit-title span { color: var(--gold); }
-  .exit-sub { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
-  .exit-code { background: rgba(255,215,0,0.08); border: 2px dashed var(--gold); border-radius: 12px; padding: 14px; margin-bottom: 24px; }
-  .exit-code-label { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
-  .exit-code-val { font-family: monospace; font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 3px; }
-  .btn-exit-order { display: block; background: var(--green); color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 12px; transition: all 0.2s; }
-  .btn-exit-order:hover { background: #1da851; }
-  .btn-exit-skip { background: none; border: none; color: var(--gray); font-size: 13px; cursor: pointer; }
-  .btn-exit-skip:hover { color: var(--white); }
-  .exit-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--gray); font-size: 22px; cursor: pointer; }
 
   /* ===== WHATSAPP BROADCAST ===== */
   .wa-broadcast-box {
@@ -998,7 +951,6 @@
       <a href="#menu">Menu</a>
       <a href="#combos">Combos</a>
       <a href="#about">About</a>
-      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a href="#location">Location</a>
     </div>
@@ -1015,7 +967,6 @@
   <a href="#menu" onclick="closeMobileMenu()">Menu</a>
   <a href="#combos" onclick="closeMobileMenu()">Combos</a>
   <a href="#about" onclick="closeMobileMenu()">About</a>
-  <a href="#reviews" onclick="closeMobileMenu()">Reviews</a>
   <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
   <a href="#location" onclick="closeMobileMenu()">Location</a>
   <a href="https://wa.me/917895743536" target="_blank" class="btn-primary" style="font-size:18px;padding:14px 28px">Abhi Order Karo 🍔</a>
@@ -1264,23 +1215,6 @@
   </div>
 </div>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="section-header reveal">
-    <h2 class="section-title">Customers Kya <span class="gold">Kehte Hain</span> ⭐</h2>
-    <p class="section-sub">Real customers, real reviews — <em>dil ki baat</em></p>
-  </div>
-  <div class="reviews-track-wrap">
-    <div class="reviews-track" id="reviews-track"></div>
-  </div>
-  <div class="review-platforms">
-    <a href="#" id="zomato-review-btn" class="btn-platform">⭐ Zomato Pe Review Karo</a>
-    <a href="#" id="swiggy-review-btn" class="btn-platform">⭐ Swiggy Pe Review Karo</a>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Mujhe%20review%20dena%20tha%20Crispy%20King%20ke%20baare%20mein%20😊" target="_blank" class="btn-platform">💬 WhatsApp Pe Feedback Do</a>
-  </div>
-</section>
-
-
 <!-- FAQ SECTION -->
 <section id="faq">
   <div class="section-header reveal">
@@ -1509,7 +1443,6 @@
           <li><a href="#menu">Menu</a></li>
           <li><a href="#combos">Combos</a></li>
           <li><a href="#about">Hamari Kahani</a></li>
-          <li><a href="#reviews">Reviews</a></li>
           <li><a href="#location">Location</a></li>
           <li><a href="/menu.html">Full Menu (Price List)</a></li>
           <li><a href="/delivery.html">Delivery Info</a></li>
@@ -1707,14 +1640,6 @@
         <label>Instagram Link</label>
         <input type="url" class="admin-input" id="admin-insta" placeholder="https://instagram.com/crispykingmuradnagar">
       </div>
-      <div class="admin-field">
-        <label>Zomato Review Link (Review button ke liye)</label>
-        <input type="url" class="admin-input" id="admin-zomato-review" placeholder="https://zomato.com/...">
-      </div>
-      <div class="admin-field">
-        <label>Swiggy Review Link</label>
-        <input type="url" class="admin-input" id="admin-swiggy-review" placeholder="https://swiggy.com/...">
-      </div>
     </div>
 
     <div class="admin-section">
@@ -1746,24 +1671,6 @@
   <div>
     <div class="sp-text" id="sp-text"><strong>Aryan S.</strong> ne abhi order kiya<br>Twister Burger — Muradnagar</div>
     <span class="sp-time" id="sp-time">2 minute pehle</span>
-  </div>
-</div>
-
-<!-- EXIT INTENT POPUP -->
-<div id="exit-popup">
-  <div class="exit-box">
-    <button class="exit-close" onclick="closeExitPopup()">✕</button>
-    <span class="exit-crown">👑</span>
-    <div class="exit-badge">⚡ SIRF AAPKE LIYE</div>
-    <h2 class="exit-title">Ruko! Ek <span>Special Deal</span> chhoot rahi hai!</h2>
-    <p class="exit-sub">Pehle order pe exclusive discount — sirf is session ke liye. Baad mein nahi milega!</p>
-    <div class="exit-code">
-      <div class="exit-code-label">Aapka Promo Code</div>
-      <div class="exit-code-val">KING20</div>
-    </div>
-    <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:16px">WhatsApp pe order karte waqt yeh code batao — ₹20 off milega!</p>
-    <a href="https://wa.me/917895743536?text=Assalamualaikum!%20Main%20KING20%20promo%20code%20ke%20saath%20order%20karna%20chahta%20hoon%20%F0%9F%8D%94%20Please%20confirm%20karein!" target="_blank" class="btn-exit-order" onclick="closeExitPopup()">💬 Abhi Order Karo — Code Use Karo</a>
-    <button class="btn-exit-skip" onclick="closeExitPopup()">Nahi chahiye, skip karo</button>
   </div>
 </div>
 
@@ -1851,17 +1758,6 @@ const menuData = {
     {name:'Mojito', price:69, emoji:'🍹', image:'/Mojito.jpeg', desc:'Fresh lime mojito — cool aur refreshing'},
   ]
 };
-
-const reviews = [
-  {text:'Crispy King ka Twister Burger toh next level hai! Bahut baar order kar chuka hoon. Har baar ekdum fresh aur tasty milta hai.', name:'Aryan S.', area:'Muradnagar', stars:5, date:'2 din pehle'},
-  {text:'Family Bundle ekdum perfect hai poori family ke liye. Value for money! UPI se payment bhi ho gayi seedha — bahut convenient hai.', name:'Salma Bi', area:'Rawli Road', stars:5, date:'1 hafte pehle'},
-  {text:'Fish Strips aur Cold Coffee ka combo toh bhai kamaal hai. Delivery bhi fast thi — 20 min mein ghar aa gayi.', name:'Rohit K.', area:'Muradnagar', stars:5, date:'3 din pehle'},
-  {text:'Halal aur fresh — yahi wajah hai ki main baar baar aata hoon. Crispy King ki quality ekdum top class hai, aaj bhi wahi taste hai.', name:'Imran M.', area:'Muradnagar', stars:5, date:'5 din pehle'},
-  {text:'Maharaja Burger try kiya pehli baar — ab toh ye hi mangwata hoon har baar! Bhai ye toh bilkul alag level ka burger hai.', name:'Deepak T.', area:'Muradnagar', stars:5, date:'1 hafte pehle'},
-  {text:'Loaded Fries + Oreo Shake = perfect combo. Sach mein Every Bite Rules! Aur PhonePe se payment karna bilkul easy raha.', name:'Priya R.', area:'Muradnagar', stars:5, date:'2 din pehle'},
-  {text:'Chicken Hot Wings bahut spicy thi — exactly jo chahiye tha! Crispy King ne phir se dil jeet liya. Best halal food Muradnagar mein.', name:'Zaid A.', area:'Muradnagar', stars:5, date:'4 din pehle'},
-  {text:'Paneer Pizza try ki — bilkul fresh ingredients aur perfect baked. Is price pe itni quality sirf Crispy King hi de sakta hai.', name:'Neha G.', area:'Muradnagar', stars:5, date:'6 din pehle'},
-];
 
 // ===== STATE =====
 let cart = {};
@@ -1975,24 +1871,6 @@ document.getElementById('menu-tabs').addEventListener('click', e => {
   e.target.classList.add('active');
   document.getElementById('tab-' + e.target.dataset.tab).classList.add('active');
 });
-
-// ===== REVIEWS =====
-function buildReviews() {
-  const track = document.getElementById('reviews-track');
-  const all = [...reviews, ...reviews];
-  all.forEach(r => {
-    const stars = '⭐'.repeat(r.stars);
-    const card = document.createElement('div');
-    card.className = 'review-card';
-    card.innerHTML = `
-      <div class="review-verified">✅ Verified Customer</div>
-      <div class="review-stars">${stars}</div>
-      <p class="review-text">"${r.text}"</p>
-      <div class="review-author">— ${r.name}, ${r.area}</div>
-      <div class="review-date">${r.date}</div>`;
-    track.appendChild(card);
-  });
-}
 
 // ===== CART =====
 function addToCart(name, price) {
@@ -2319,8 +2197,6 @@ function loadAdminValues() {
   document.getElementById('admin-zomato').value = localStorage.getItem('ck_zomato') || '';
   document.getElementById('admin-upi').value = localStorage.getItem('ck_upi') || '';
   document.getElementById('admin-insta').value = localStorage.getItem('ck_insta') || '';
-  document.getElementById('admin-zomato-review').value = localStorage.getItem('ck_zomato_review') || '';
-  document.getElementById('admin-swiggy-review').value = localStorage.getItem('ck_swiggy_review') || '';
   updateUpiPreview();
 }
 
@@ -2340,8 +2216,6 @@ function saveAdmin() {
   const zomato = document.getElementById('admin-zomato').value.trim();
   const upi = document.getElementById('admin-upi').value.trim();
   const insta = document.getElementById('admin-insta').value.trim();
-  const zomatoReview = document.getElementById('admin-zomato-review').value.trim();
-  const swiggyReview = document.getElementById('admin-swiggy-review').value.trim();
 
   localStorage.setItem('ck_offer', offer);
   localStorage.setItem('ck_open', openT);
@@ -2350,16 +2224,14 @@ function saveAdmin() {
   localStorage.setItem('ck_zomato', zomato);
   localStorage.setItem('ck_upi', upi);
   localStorage.setItem('ck_insta', insta);
-  localStorage.setItem('ck_zomato_review', zomatoReview);
-  localStorage.setItem('ck_swiggy_review', swiggyReview);
 
-  applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swiggyReview);
+  applyAdminValues(offer, swiggy, zomato, upi, insta);
   updateStatus();
   showToast('✅ Sab save ho gaya!');
   closeAdmin();
 }
 
-function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swiggyReview) {
+function applyAdminValues(offer, swiggy, zomato, upi, insta) {
   if (offer) document.getElementById('offer-text').textContent = offer;
   // Swiggy
   const swiggyEl = document.getElementById('swiggy-link');
@@ -2376,13 +2248,6 @@ function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swigg
   }
   // Instagram
   if (insta) { document.getElementById('footer-insta').href = insta; }
-  // Review buttons
-  const zRevEl = document.getElementById('zomato-review-btn');
-  const sRevEl = document.getElementById('swiggy-review-btn');
-  if (zomatoReview) { zRevEl.href = zomatoReview; zRevEl.classList.remove('disabled'); }
-  else { zRevEl.href = 'javascript:void(0)'; zRevEl.classList.add('disabled'); zRevEl.onclick = () => showToast('⏳ Coming Soon! Abhi WhatsApp pe feedback do 💬'); }
-  if (swiggyReview) { sRevEl.href = swiggyReview; sRevEl.classList.remove('disabled'); }
-  else { sRevEl.href = 'javascript:void(0)'; sRevEl.classList.add('disabled'); sRevEl.onclick = () => showToast('⏳ Coming Soon! Abhi WhatsApp pe feedback do 💬'); }
   // Footer links
   const fSwiggy = document.getElementById('footer-swiggy');
   const fZomato = document.getElementById('footer-zomato');
@@ -2414,9 +2279,7 @@ function loadSaved() {
   const zomato = localStorage.getItem('ck_zomato');
   const upi = localStorage.getItem('ck_upi');
   const insta = localStorage.getItem('ck_insta');
-  const zomatoReview = localStorage.getItem('ck_zomato_review');
-  const swiggyReview = localStorage.getItem('ck_swiggy_review');
-  applyAdminValues(offer || '', swiggy || '', zomato || '', upi || '', insta || '', zomatoReview || '', swiggyReview || '');
+  applyAdminValues(offer || '', swiggy || '', zomato || '', upi || '', insta || '');
 }
 
 // ===== TOAST =====
@@ -2608,32 +2471,6 @@ window.addEventListener('scroll', () => {
   }
 })();
 
-// ===== EXIT INTENT POPUP =====
-(function() {
-  let shown = sessionStorage.getItem('ck_exit_shown');
-  if (shown) return;
-  let triggered = false;
-  document.addEventListener('mouseleave', function(e) {
-    if (e.clientY < 10 && !triggered) {
-      triggered = true;
-      sessionStorage.setItem('ck_exit_shown', '1');
-      document.getElementById('exit-popup').classList.add('show');
-    }
-  });
-  // Mobile: show after 45 seconds of inactivity
-  let mobileTimer = setTimeout(() => {
-    if (!triggered && window.innerWidth < 768) {
-      triggered = true;
-      sessionStorage.setItem('ck_exit_shown', '1');
-      document.getElementById('exit-popup').classList.add('show');
-    }
-  }, 45000);
-})();
-
-window.closeExitPopup = function() {
-  document.getElementById('exit-popup').classList.remove('show');
-};
-
 // ===== BIRTHDAY SUBMIT =====
 window.submitBirthday = function() {
   const name = document.getElementById('bday-name').value.trim();
@@ -2658,7 +2495,6 @@ function toggleFaq(btn) {
 // ===== INIT =====
 document.getElementById('footer-year').textContent = new Date().getFullYear();
 buildMenus();
-buildReviews();
 updateStatus();
 loadSaved();
 loadCartFromStorage();

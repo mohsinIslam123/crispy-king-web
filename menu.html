@@ -975,8 +975,9 @@
     border-radius: 16px; padding: 20px; position: relative; display: flex; flex-direction: column;
     transition: all 0.3s; overflow: hidden; cursor: pointer;
   }
+  /* Decorative glow only. pointer-events:none so it never sits on top of the Add button and swallows taps (opacity:0 does not stop hit-testing). */
   .combo-card::before {
-    content:''; position:absolute; inset:0; border-radius:18px;
+    content:''; position:absolute; inset:0; border-radius:18px; pointer-events: none;
     background: radial-gradient(circle at 50% 0%, rgba(255,215,0,0.03), transparent 70%);
     transition: opacity 0.3s; opacity: 0;
   }
@@ -1054,27 +1055,6 @@
   .about-text p { color: rgba(255,255,255,0.7); font-size: 15px; line-height: 1.8; margin-bottom: 16px; }
   .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
   .about-tag { background: var(--card); border: 1px solid var(--border); color: rgba(255,255,255,0.75); padding: 8px 16px; border-radius: 50px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-
-  /* REVIEWS */
-  #reviews { background: #060606; }
-  .reviews-track-wrap { overflow: hidden; max-width: 1200px; margin: 0 auto 40px; position: relative; }
-  .reviews-track-wrap::before, .reviews-track-wrap::after { content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; }
-  .reviews-track-wrap::before { left:0; background: linear-gradient(to right, #060606, transparent); }
-  .reviews-track-wrap::after { right:0; background: linear-gradient(to left, #060606, transparent); }
-  .reviews-track { display: flex; gap: 20px; animation: reviewScroll 32s linear infinite; width: max-content; }
-  .reviews-track:hover { animation-play-state: paused; }
-  @keyframes reviewScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-  .review-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; width: 300px; flex-shrink: 0; }
-  .review-verified { font-size: 11px; color: #4ade80; background: rgba(0,200,80,0.1); border: 1px solid rgba(0,200,80,0.2); padding: 3px 8px; border-radius: 50px; font-weight: 700; margin-bottom: 10px; display: inline-block; }
-  .review-stars { color: var(--gold); font-size: 16px; margin-bottom: 10px; }
-  .review-text { color: rgba(255,255,255,0.8); font-size: 14px; line-height: 1.6; margin-bottom: 14px; font-style: italic; }
-  .review-author { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; color: var(--gold); }
-  .review-date { color: var(--gray); font-size: 12px; }
-  .review-platforms { display: flex; gap: 16px; justify-content: center; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-  .btn-platform { padding: 14px 28px; border-radius: 10px; border: 1px solid var(--border); background: var(--card); color: var(--white); font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-  .btn-platform:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-  .btn-platform.disabled { opacity: 0.5; cursor: default; }
-  .btn-platform.disabled:hover { transform: none; border-color: var(--border); color: var(--white); }
 
   /* OFFER BANNER */
   #offer-banner { background: linear-gradient(135deg, var(--crimson), #8a0012); padding: 50px 5%; text-align: center; position: relative; overflow: hidden; }
@@ -1283,7 +1263,6 @@
     section { padding: 60px 5%; }
     #cart-drawer { width: 100%; right: -100%; }
     .hero-badge-halal { display: none; }
-    .review-platforms { flex-direction: column; align-items: center; }
     .payment-options { grid-template-columns: 1fr 1fr; }
     .upi-app-icons { flex-wrap: wrap; }
   }
@@ -1369,7 +1348,7 @@
   @media print {
     #navbar, #status-banner, #float-stack,
     #back-top, #sticky-order-bar, .hero-ctas, footer, .btn-add,
-    #social-proof-pop, .ticker-wrap, #combos, #reviews,
+    #social-proof-pop, .ticker-wrap, #combos,
     #about, #delivery, #location, #offer-banner, #faq { display:none!important; }
     body { background: #fff; color: #000; }
     .menu-card { border: 1px solid #ddd; break-inside: avoid; }
@@ -1393,32 +1372,6 @@
   .owner-info .owner-title { color: var(--gold); font-size: 13px; font-weight: 600; margin-bottom: 10px; }
   .owner-info p { color: rgba(255,255,255,0.65); font-size: 13px; line-height: 1.7; }
   @media (max-width: 600px) { .owner-card { flex-direction: column; text-align: center; } }
-
-  /* ===== EXIT INTENT POPUP ===== */
-  #exit-popup {
-    display: none; position: fixed; inset: 0; z-index: 9999998;
-    background: rgba(0,0,0,0.88); align-items: center; justify-content: center; padding: 20px;
-  }
-  #exit-popup.show { display: flex; }
-  .exit-box {
-    background: #111; border: 1px solid rgba(255,215,0,0.25); border-radius: 24px;
-    padding: 40px 36px; max-width: 420px; width: 100%; text-align: center;
-    position: relative; animation: popIn 0.4s cubic-bezier(0.16,1,0.3,1);
-  }
-  @keyframes popIn { from{transform:scale(0.85);opacity:0} to{transform:scale(1);opacity:1} }
-  .exit-crown { font-size: 56px; display: block; margin-bottom: 12px; }
-  .exit-badge { background: var(--crimson); color: #fff; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 50px; letter-spacing: 1px; display: inline-block; margin-bottom: 16px; font-family: 'Poppins', sans-serif; }
-  .exit-title { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 26px; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
-  .exit-title span { color: var(--gold); }
-  .exit-sub { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.6; margin-bottom: 24px; }
-  .exit-code { background: rgba(255,215,0,0.08); border: 2px dashed var(--gold); border-radius: 12px; padding: 14px; margin-bottom: 24px; }
-  .exit-code-label { font-size: 11px; color: var(--gray); margin-bottom: 4px; }
-  .exit-code-val { font-family: monospace; font-size: 28px; font-weight: 900; color: var(--gold); letter-spacing: 3px; }
-  .btn-exit-order { display: block; background: var(--green); color: #fff; padding: 15px; border-radius: 12px; text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 15px; margin-bottom: 12px; transition: all 0.2s; }
-  .btn-exit-order:hover { background: #1da851; }
-  .btn-exit-skip { background: none; border: none; color: var(--gray); font-size: 13px; cursor: pointer; }
-  .btn-exit-skip:hover { color: var(--white); }
-  .exit-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--gray); font-size: 22px; cursor: pointer; }
 
   /* ===== WHATSAPP BROADCAST ===== */
   .wa-broadcast-box {
