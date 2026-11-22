@@ -1594,7 +1594,7 @@
       <span id="cart-total-display">₹0</span>
     </div>
     <div id="min-order-warning" style="display:none;color:#ff6b6b;font-size:12px;text-align:center;margin-bottom:8px">
-      ⚠️ Minimum order ₹400 hai. ₹<span id="min-order-remaining">0</span> aur ka order karo.
+      ⚠️ Minimum order ₹<span id="min-order-total"></span> hai. ₹<span id="min-order-remaining">0</span> aur ka order karo.
     </div>
     <div class="cart-fields">
       <input type="text" class="cart-input" id="cart-name" placeholder="Aapka Naam *">
@@ -1878,8 +1878,8 @@ const CONFIG = {
   RESTAURANT_LAT: 28.7739,                  // Crispy King latitude
   RESTAURANT_LNG: 77.5044,                  // Crispy King longitude
   DELIVERY_RADIUS_KM: 3,                    // Max delivery distance
-  DELIVERY_CHARGE: 30,                      // Delivery charge (₹)
-  MIN_ORDER: 400                            // Minimum order value (₹)
+  DELIVERY_CHARGE: 0,                       // Delivery charge (₹)
+  MIN_ORDER: 350                            // Minimum order value (₹)
 };
 
 // ===== HAVERSINE DISTANCE (km) =====
@@ -2022,7 +2022,8 @@ function updateCart() {
   document.getElementById('cart-delivery-display').textContent = subtotal > 0 ? '₹' + delivery : '₹0';
   document.getElementById('cart-total-display').textContent = '₹' + grandTotal;
 
-  // Min order warning
+  // Min order warning (threshold comes from CONFIG, not hard-coded in the HTML)
+  document.getElementById('min-order-total').textContent = CONFIG.MIN_ORDER;
   const warning = document.getElementById('min-order-warning');
   const remaining = document.getElementById('min-order-remaining');
   if (subtotal > 0 && subtotal < CONFIG.MIN_ORDER) {
