@@ -198,7 +198,7 @@ menu_body = f"""<main class="page-wrap">
   </div>
   {chr(10).join(sections)}
   <h2>Delivery aur order</h2>
-  <p>3 km ke radius mein FREE home delivery, delivery charge ₹0, minimum order ₹100. Poori details ke liye <a href="/delivery.html" style="color:var(--gold)">Delivery page</a> dekhein.</p>
+  <p>3 km ke radius mein FREE home delivery, delivery charge ₹0, minimum order ₹350. Poori details ke liye <a href="/delivery.html" style="color:var(--gold)">Delivery page</a> dekhein.</p>
 </main>
 """
 menu_html = head(menu_title, menu_desc, "/menu.html", menu_jsonld) + menu_body + FOOT
@@ -211,7 +211,7 @@ DELIVERY_FAQS = [
     ("Delivery ka time kitna lagta hai?",
      "Average delivery time 20 se 30 minutes hai."),
     ("Delivery ke liye koi charge lagta hai?",
-     "Nahi. 3 km ke andar delivery charge ₹0 hai. Minimum order ₹100 hai."),
+     "Nahi. 3 km ke andar delivery charge ₹0 hai. Minimum order ₹350 hai."),
     ("Delivery ka order kaise karein?",
      f"WhatsApp pe {PHONE_MAIN} par message karein ya call karein. Cash on Delivery ya UPI se pay karein."),
 ]
@@ -225,12 +225,12 @@ delivery_jsonld = {"@context": "https://schema.org", "@graph": [
 ]}
 faq_html = "".join(f'<h3>{html.escape(q, quote=False)}</h3>\n<p>{html.escape(a, quote=False)}</p>\n' for q, a in DELIVERY_FAQS)
 delivery_title = "Crispy King Muradnagar Delivery | 3 km Free Home Delivery"
-delivery_desc = ("Crispy King Muradnagar: 3 km tak FREE home delivery, delivery charge ₹0, minimum order ₹100. "
+delivery_desc = ("Crispy King Muradnagar: 3 km tak FREE home delivery, delivery charge ₹0, minimum order ₹350. "
                  "Rawli Road, Modinagar, Hapur Road, Duhai. Order: 7895743536.")
 delivery_body = f"""<main class="page-wrap">
   <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › Delivery</nav>
   <h1>Crispy King Muradnagar Delivery — <span class="gold">3 km Tak FREE</span></h1>
-  <p>Crispy King Muradnagar 3 km ke radius mein FREE home delivery deta hai, delivery charge ₹0 aur minimum order ₹100. Delivery area: Muradnagar, Rawli Road, Modinagar, Hapur Road aur Duhai. Order ke liye WhatsApp {PHONE_MAIN}.</p>
+  <p>Crispy King Muradnagar 3 km ke radius mein FREE home delivery deta hai, delivery charge ₹0 aur minimum order ₹350. Delivery area: Muradnagar, Rawli Road, Modinagar, Hapur Road aur Duhai. Order ke liye WhatsApp {PHONE_MAIN}.</p>
   <p class="updated">Last updated: 22 November 2026</p>
   <div class="cta-row">
     <a class="btn-primary" href="{WA}" target="_blank" rel="noopener">🍔 WhatsApp pe Order Karo</a>
@@ -243,7 +243,7 @@ delivery_body = f"""<main class="page-wrap">
   <h2>Delivery charge aur minimum order</h2>
   <ul class="plain">
     <li>3 km ke andar delivery charge: ₹0</li>
-    <li>Minimum order (delivery ke liye): ₹100</li>
+    <li>Minimum order (delivery ke liye): ₹350</li>
     <li>Average delivery time: 20 se 30 minutes</li>
   </ul>
   <h2>Timings</h2>

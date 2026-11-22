@@ -165,7 +165,7 @@
           "name": "Delivery kaise milegi? Kya delivery free hai?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Haan, 3 km ke radius mein delivery FREE hai (delivery charge ₹0). Minimum order ₹100. WhatsApp par 7895743536 pe order karein ya call karein."
+            "text": "Haan, 3 km ke radius mein delivery FREE hai (delivery charge ₹0). Minimum order ₹350. WhatsApp par 7895743536 pe order karein ya call karein."
           }
         },
         {
@@ -968,13 +968,8 @@
 </style>
 
 
-<!-- Google Analytics GA4 — Replace G-XXXXXXXXXX with your actual ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- WhatsApp click tracking (gtag is configured once, in the GA4 snippet at the top of <head>) -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
   // Track WhatsApp clicks
   document.addEventListener('click', function(e) {
     const a = e.target.closest('a[href*="wa.me"]');
@@ -1069,7 +1064,7 @@
   <ul class="facts-list">
     <li><strong>Address</strong>Near Bilal Masjid, Rawli Road, Muradnagar, Ghaziabad, UP 201206</li>
     <li><strong>Timings</strong>Somvar se Ravivar, 11:00 AM – 11:00 PM</li>
-    <li><strong>Delivery</strong>3 km tak FREE delivery · Minimum order ₹100</li>
+    <li><strong>Delivery</strong>3 km tak FREE delivery · Minimum order ₹350</li>
     <li><strong>Payment</strong>Cash on Delivery aur UPI (GPay, PhonePe, Paytm, BHIM)</li>
     <li><strong>Order / Call</strong>7895743536 (WhatsApp pe bhi)</li>
     <li><strong>Halal</strong>100% Halal Certified brand</li>
@@ -1319,7 +1314,7 @@
         <span>🚴 Delivery kaise milegi? Kya delivery free hai?</span>
         <span class="faq-q-icon">+</span>
       </button></h3>
-      <div class="faq-a">Haan, 3 km ke radius mein delivery FREE hai (delivery charge ₹0). Minimum order ₹100. WhatsApp par 7895743536 pe order karein ya call karein.</div>
+      <div class="faq-a">Haan, 3 km ke radius mein delivery FREE hai (delivery charge ₹0). Minimum order ₹350. WhatsApp par 7895743536 pe order karein ya call karein.</div>
     </div>
     <div class="faq-item reveal">
       <h3 class="faq-heading"><button class="faq-q" onclick="toggleFaq(this)">
@@ -1398,7 +1393,7 @@
       <div class="delivery-info-item">🍔 Freshly packed, hot delivery</div>
       <div class="delivery-info-item">⚡ Quick delivery on every order</div>
       <div class="delivery-info-item">📱 UPI & Cash — dono accept hai</div>
-      <div class="delivery-info-item">💰 Minimum Order: ₹100 (delivery ke liye)</div>
+      <div class="delivery-info-item">💰 Minimum Order: ₹350 (delivery ke liye)</div>
       <div class="delivery-meta">
         <div class="delivery-meta-item"><span class="delivery-meta-num">20-30</span><span class="delivery-meta-lbl">Min Avg Delivery</span></div>
         <div class="delivery-meta-item"><span class="delivery-meta-num">3 km</span><span class="delivery-meta-lbl">Free Zone</span></div>
@@ -1503,9 +1498,9 @@
         <p class="footer-tagline">Every Bite Rules 👑<br>Muradnagar ka #1 Halal Fast Food.<br>Fresh, tasty, aur 100% halal — Crispy King Authorised Franchise.</p>
         <div class="footer-socials">
           <a href="https://wa.me/917895743536" target="_blank" class="footer-social-btn" title="WhatsApp">💬</a>
-          <a href="#" id="footer-insta" class="footer-social-btn" title="Instagram">📸</a>
-          <a href="#" id="footer-swiggy" class="footer-social-btn" title="Swiggy">🔶</a>
-          <a href="#" id="footer-zomato" class="footer-social-btn" title="Zomato">🔴</a>
+          <a href="#" id="footer-insta" class="footer-social-btn" data-placeholder title="Instagram">📸</a>
+          <a href="#" id="footer-swiggy" class="footer-social-btn" data-placeholder title="Swiggy">🔶</a>
+          <a href="#" id="footer-zomato" class="footer-social-btn" data-placeholder title="Zomato">🔴</a>
         </div>
       </div>
       <div class="footer-col">
@@ -2019,7 +2014,8 @@ function updateCart() {
 
   document.getElementById('cart-count').textContent = count;
   document.getElementById('cart-subtotal-display').textContent = '₹' + subtotal;
-  document.getElementById('cart-delivery-display').textContent = subtotal > 0 ? '₹' + delivery : '₹0';
+  // FREE when the configured delivery charge is 0 (shown only once the cart has items)
+  document.getElementById('cart-delivery-display').textContent = subtotal === 0 ? '₹0' : (delivery === 0 ? 'FREE' : '₹' + delivery);
   document.getElementById('cart-total-display').textContent = '₹' + grandTotal;
 
   // Min order warning (threshold comes from CONFIG, not hard-coded in the HTML)
@@ -2209,7 +2205,7 @@ function sendWhatsApp(paymentMethod, paymentId, subtotal) {
     `Assalamualaikum Crispy King! 🙏\n\n` +
     `Naya Order:\n${itemLines.join('\n')}\n\n` +
     `🧾 Items Total: ₹${subtotal}\n` +
-    `🛵 Delivery: ₹${delivery}\n` +
+    `🛵 Delivery: ${delivery === 0 ? 'FREE' : '₹' + delivery}\n` +
     `💰 Grand Total: ₹${grandTotal}\n` +
     `${paymentLine}\n\n` +
     `👤 Naam: ${name}\n` +
@@ -2388,9 +2384,9 @@ function applyAdminValues(offer, swiggy, zomato, upi, insta, zomatoReview, swigg
   const zRevEl = document.getElementById('zomato-review-btn');
   const sRevEl = document.getElementById('swiggy-review-btn');
   if (zomatoReview) { zRevEl.href = zomatoReview; zRevEl.classList.remove('disabled'); }
-  else { zRevEl.href = 'javascript:void(0)'; zRevEl.classList.add('disabled'); zRevEl.onclick = () => showToast('Zomato link abhi set nahi hua — Admin se karwao'); }
+  else { zRevEl.href = 'javascript:void(0)'; zRevEl.classList.add('disabled'); zRevEl.onclick = () => showToast('⏳ Coming Soon! Abhi WhatsApp pe feedback do 💬'); }
   if (swiggyReview) { sRevEl.href = swiggyReview; sRevEl.classList.remove('disabled'); }
-  else { sRevEl.href = 'javascript:void(0)'; sRevEl.classList.add('disabled'); sRevEl.onclick = () => showToast('Swiggy link abhi set nahi hua — Admin se karwao'); }
+  else { sRevEl.href = 'javascript:void(0)'; sRevEl.classList.add('disabled'); sRevEl.onclick = () => showToast('⏳ Coming Soon! Abhi WhatsApp pe feedback do 💬'); }
   // Footer links
   const fSwiggy = document.getElementById('footer-swiggy');
   const fZomato = document.getElementById('footer-zomato');
@@ -2578,6 +2574,17 @@ function closeMobileMenu() { document.getElementById('mobile-menu').classList.re
   // First popup after 8 seconds, then every 25 seconds
   setTimeout(() => { showNext(); setInterval(showNext, 25000); }, 8000);
 })();
+
+// ===== PLACEHOLDER LINKS =====
+// Links with href="#" (URL not set yet) show a toast instead of jumping to the top.
+// Once an admin URL is set, the href is a real URL and the link works normally.
+document.addEventListener('click', function (e) {
+  const a = e.target.closest('a[data-placeholder]');
+  if (a && a.getAttribute('href') === '#') {
+    e.preventDefault();
+    showToast('⏳ Coming Soon! Abhi WhatsApp pe order karo 💬');
+  }
+});
 
 // ===== BACK TO TOP =====
 window.addEventListener('scroll', () => {
