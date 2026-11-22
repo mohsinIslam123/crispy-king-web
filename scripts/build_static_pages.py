@@ -15,7 +15,7 @@ import pathlib
 import re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SITE = "https://crispyking.in"
+SITE = "https://crispyking.store"
 TODAY = "2026-11-22"
 WA = "https://wa.me/917895743536"
 PHONE_MAIN = "7895743536"
