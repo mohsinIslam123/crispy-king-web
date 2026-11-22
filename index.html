@@ -1112,7 +1112,7 @@
       <ul class="combo-items"><li>Aloo Patty Burger</li><li>French Fries</li><li>Cold Drink</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹109</div>
-        <button class="btn-combo" onclick="orderCombo('Entry Pack - ₹109', 'Aloo Patty + Fries + Drink', 109)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Entry Pack', 109)">+ Cart Mein Daalo</button>
       </div>
     </div>
     <div class="combo-card reveal">
@@ -1122,7 +1122,7 @@
       <ul class="combo-items"><li>Chicken Burger</li><li>French Fries</li><li>Cold Drink</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹129</div>
-        <button class="btn-combo" onclick="orderCombo('Chicken Starter - ₹129', 'Chicken Burger + Fries + Drink', 129)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Chicken Starter', 129)">+ Cart Mein Daalo</button>
       </div>
     </div>
     <div class="combo-card reveal">
@@ -1132,7 +1132,7 @@
       <ul class="combo-items"><li>Chicken Burger</li><li>Chicken Popcorn (6pcs)</li><li>Cold Drink</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹159</div>
-        <button class="btn-combo" onclick="orderCombo('Popcorn Lover - ₹159', 'Chicken Burger + Popcorn (6pc) + Drink', 159)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Popcorn Lover', 159)">+ Cart Mein Daalo</button>
       </div>
     </div>
     <div class="combo-card reveal">
@@ -1142,7 +1142,7 @@
       <ul class="combo-items"><li>Fish Burger</li><li>Fish Strips (4pcs)</li><li>Regular Fries</li><li>Cold Drink</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹249</div>
-        <button class="btn-combo" onclick="orderCombo('Fish Special - ₹249', 'Fish Burger + Fish Strips (4pc) + Fries + Drink', 249)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Fish Special', 249)">+ Cart Mein Daalo</button>
       </div>
     </div>
     <div class="combo-card featured reveal">
@@ -1152,7 +1152,7 @@
       <ul class="combo-items"><li>2 Chicken Burgers</li><li>2 Chicken Wraps</li><li>Half Chick Popcorn</li><li>2 French Fries</li><li>4 Cold Drinks</li><li>4 Dip Sauces</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹666</div>
-        <button class="btn-combo" onclick="orderCombo('Family Bundle - ₹666', '2 Chicken Burgers + 2 Wrap + Half Popcorn + 2 Fries + 4 Drinks + 4 Dip', 666)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Family Bundle', 666)">+ Cart Mein Daalo</button>
       </div>
     </div>
     <div class="combo-card reveal">
@@ -1162,7 +1162,7 @@
       <ul class="combo-items"><li>4 Chicken Burgers</li><li>4 Chicken Wraps</li><li>4 Half Chick Popcorn</li><li>4 French Fries</li><li>8 Cold Drinks</li><li>4 Dip Sauces</li></ul>
       <div class="combo-foot">
         <div class="combo-price">₹1300</div>
-        <button class="btn-combo" onclick="orderCombo('Party Pack - ₹1300', '4 Burgers + 4 Wraps + 4 Popcorn + 4 Fries + 8 Drinks + 4 Dip', 1300)">Yeh Combo Order Karo</button>
+        <button class="btn-combo" onclick="addToCart('Party Pack', 1300)">+ Cart Mein Daalo</button>
       </div>
     </div>
   </div>
@@ -2230,12 +2230,8 @@ function reorder() {
   } catch(e) { alert('Previous order load nahi hua.'); }
 }
 
-// ===== COMBO ORDER =====
-function orderCombo(name, items, price) {
-  const upiId = getUpiId();
-  const msg = encodeURIComponent(`Assalamualaikum Crispy King! 👑\n\nMaine ${name} order karna hai.\n\n📦 Items: ${items}\n💰 Total: ₹${price}\n\n(Payment UPI ya Cash on Delivery — bataaiye)\n\nPlease confirm karein. 🙏`);
-  window.open(`https://wa.me/917895743536?text=${msg}`, '_blank');
-}
+// ===== COMBO CARDS =====
+// Combo buttons call addToCart(name, price) directly, the same as menu items.
 
 // ===== APP LINK HANDLER =====
 function handleAppLink(e, type) {
