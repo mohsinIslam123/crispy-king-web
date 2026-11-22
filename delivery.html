@@ -273,7 +273,7 @@
   .combos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
   .combo-card {
     background: var(--card); border: 1px solid rgba(255,215,0,0.12);
-    border-radius: 18px; padding: 28px 24px; position: relative;
+    border-radius: 16px; padding: 20px; position: relative; display: flex; flex-direction: column;
     transition: all 0.3s; overflow: hidden; cursor: pointer;
   }
   .combo-card::before {
@@ -285,19 +285,20 @@
   .combo-card:hover::before { opacity: 1; }
   .combo-card.featured { border: 2px solid var(--gold); box-shadow: 0 0 40px rgba(255,215,0,0.2), inset 0 0 40px rgba(255,215,0,0.03); }
   .combo-card.featured::before { opacity: 1; }
-  .combo-num { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 56px; color: rgba(255,215,0,0.15); position: absolute; top: 16px; right: 20px; line-height: 1; }
-  .combo-badge { display: inline-block; background: var(--crimson); color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-bottom: 14px; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+  .combo-num { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 26px; color: rgba(255,215,0,0.10); position: absolute; top: 14px; right: 16px; line-height: 1; }
+  .combo-badge { display: inline-block; background: var(--crimson); color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 50px; margin-bottom: 10px; font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; }
+  .combo-badge { align-self: flex-start; }
   .combo-card.featured .combo-badge { background: var(--gold); color: var(--black); }
-  .combo-name { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); margin-bottom: 12px; }
-  .combo-items { list-style: none; margin-bottom: 18px; }
-  .combo-items li { color: rgba(255,255,255,0.65); font-size: 13px; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+  .combo-name { font-family: 'Poppins', sans-serif; font-weight: 800; font-size: 18px; color: var(--white); margin-bottom: 8px; }
+  .combo-items { list-style: none; margin: 0 0 14px; }
+  .combo-items li { color: rgba(255,255,255,0.65); font-size: 13px; padding: 3px 0; line-height: 1.3; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
   .combo-items li::before { content:'→'; color: var(--gold); font-size: 11px; }
-  .combo-price { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 32px; color: var(--gold); margin-bottom: 18px; }
-  .btn-combo { width: 100%; background: var(--crimson); color: white; border: none; border-radius: 10px; padding: 13px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+  .combo-price { font-family: 'Poppins', sans-serif; font-weight: 900; font-size: 24px; line-height: 1; color: var(--gold); margin: 0; }
+  .btn-combo { flex: 0 0 auto; white-space: nowrap; background: var(--crimson); color: white; border: none; border-radius: 10px; padding: 10px 14px; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; cursor: pointer; transition: all 0.2s; }
   .btn-combo:hover { background: #e0001f; transform: scale(1.01); }
   .combo-card.featured .btn-combo { background: var(--gold); color: var(--black); }
   .combo-card.featured .btn-combo:hover { background: #ffea00; }
-  .combo-img { font-size: 42px; text-align: center; padding: 16px 0 10px; letter-spacing: 6px; display: block; }
+  .combo-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; }
 
   /* MENU */
   #menu { background: var(--black); }
@@ -575,7 +576,9 @@
     .nav-links { display: none; }
     .btn-order-nav { display: none; }
     .hamburger { display: flex; }
-    .combos-grid { grid-template-columns: 1fr; }
+    .combos-grid { grid-template-columns: 1fr; gap: 16px; }
+    .combo-card { padding: 16px; }
+    .combo-items { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
     .trust-grid { grid-template-columns: 1fr 1fr; }
     .footer-top { grid-template-columns: 1fr; }
     section { padding: 60px 5%; }
@@ -608,10 +611,10 @@
   @media (max-width: 768px) {
     #sticky-order-bar { display: flex; }
     #float-stack { bottom: 92px; } /* sticky order bar is about 81px tall (top at 763px on an 844px screen) */
-    #cart-bubble, #wa-bubble { width: 46px; height: 46px; }
+    #cart-bubble { width: 46px; height: 46px; }
     #cart-bubble { font-size: 20px; }
-    #wa-bubble { font-size: 22px; }
-    #toast { bottom: 296px; } /* above the floating stack (92-196px) and back-to-top (240px) */
+    #wa-bubble { display: none; } /* phones: WhatsApp is already in the sticky order bar, so only the cart floats */
+    #toast { bottom: 296px; } /* sits above the floating cart */
     .ticker-wrap { display: none; } /* marquee sat under the WhatsApp button on 844px-high phones */
   }
   .sticky-bar-text { flex: 1; color: #fff; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px; }
@@ -653,7 +656,7 @@
   }
   #back-top.visible { opacity: 1; transform: translateY(0); }
   #back-top:hover { background: var(--crimson); border-color: var(--crimson); color: #fff; }
-  @media (max-width: 768px) { #back-top { bottom: 240px; } }
+  @media (max-width: 768px) { #back-top { top: 100px; right: 0; left: auto; bottom: auto; width: 36px; height: 44px; border-radius: 12px 0 0 12px; border-right: 0; } } /* phone: flush right tab under the navbar */
 
   /* ===== PRINT MENU BUTTON ===== */
   .btn-print-menu {
