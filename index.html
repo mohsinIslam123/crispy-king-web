@@ -1874,7 +1874,7 @@ let cart = {};
 // ===== CONFIG — sirf yahan change karo =====
 const CONFIG = {
   RAZORPAY_KEY: 'rzp_live_5mCNiLvas0j0K', // Razorpay Live Key ID
-  WHATSAPP: '918979913231',                 // Order WhatsApp number
+  WHATSAPP: '917895743536',                 // Order WhatsApp number
   RESTAURANT_LAT: 28.7739,                  // Crispy King latitude
   RESTAURANT_LNG: 77.5044,                  // Crispy King longitude
   DELIVERY_RADIUS_KM: 3,                    // Max delivery distance
@@ -2089,8 +2089,8 @@ function selectPayment(type) {
 function placeOrder() {
   const name = document.getElementById('cart-name').value.trim();
   const addr = document.getElementById('cart-address').value.trim();
-  if (!name) { alert('Apna naam daalo!'); return; }
-  if (!addr) { alert('Delivery address daalo!'); return; }
+  if (!name) { alert('Apna naam daalo!'); document.getElementById('cart-name').focus(); return; }
+  if (!addr) { alert('Delivery address daalo!'); document.getElementById('cart-address').focus(); return; }
   const count = Object.values(cart).reduce((s, i) => s + i.qty, 0);
   if (count === 0) { alert('Cart khaali hai!'); return; }
 
@@ -2190,24 +2190,37 @@ function upiDone() {
 }
 
 // ===== WHATSAPP ORDER =====
+// Opens WhatsApp with a same-tab navigation (window.location.href), not window.open().
+// This runs asynchronously (after the geolocation check, or after Razorpay's success
+// callback), where window.open() is often blocked as an unrequested popup.
 function sendWhatsApp(paymentMethod, paymentId, subtotal) {
   const name = document.getElementById('cart-name').value.trim();
   const addr = document.getElementById('cart-address').value.trim();
   if (!subtotal) subtotal = Object.values(cart).reduce((s, i) => s + i.price * i.qty, 0);
   const delivery = CONFIG.DELIVERY_CHARGE;
   const grandTotal = subtotal + delivery;
-  let items = '';
+  const itemLines = [];
   for (const [n, {price, qty}] of Object.entries(cart)) {
-    if (qty > 0) items += `\n• ${n} x${qty} — ₹${price * qty}`;
+    if (qty > 0) itemLines.push(`• ${n} x${qty} = ₹${price * qty}`);
   }
   const paymentLine = paymentId ? `💳 Payment ID: ${paymentId}` : `💳 Payment: ${paymentMethod}`;
+  const text =
+    `Assalamualaikum Crispy King! 🙏\n\n` +
+    `Naya Order:\n${itemLines.join('\n')}\n\n` +
+    `🧾 Items Total: ₹${subtotal}\n` +
+    `🛵 Delivery: ₹${delivery}\n` +
+    `💰 Grand Total: ₹${grandTotal}\n` +
+    `${paymentLine}\n\n` +
+    `👤 Naam: ${name}\n` +
+    `📍 Address: ${addr}\n\n` +
+    `Please confirm karein. Shukriya! 🍔👑`;
+  const waUrl = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(text)}`;
   localStorage.setItem('ck_last_order', JSON.stringify(cart));
-  const msg = encodeURIComponent(`Assalamualaikum Crispy King! 🙏\n\nNaya Order:\n${items}\n\n🧾 Items Total: ₹${subtotal}\n🛵 Delivery: ₹${delivery}\n💰 Grand Total: ₹${grandTotal}\n${paymentLine}\n\n👤 Naam: ${name}\n📍 Address: ${addr}\n\nPlease confirm karein. Shukriya! 🍔👑`);
-  window.open(`https://wa.me/${CONFIG.WHATSAPP}?text=${msg}`, '_blank');
   cart = {};
   updateCart();
   saveCartToStorage();
   toggleCart();
+  window.location.href = waUrl;
 }
 
 function reorder() {
